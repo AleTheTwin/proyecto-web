@@ -16,7 +16,7 @@ public class EntrenadorDAO implements DAO {
         try {
             conn = new ConexionDB().getConexion();
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Entrenador");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM entrenador");
             while(rs.next()) {
                 entrenadores.add(new Entrenador(rs.getString("Correo"), rs.getString("Password"), rs.getString("NombreE"), rs.getString("tipoE")));
             }
@@ -59,7 +59,7 @@ public class EntrenadorDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("UPDATE Entrenador SET correo = ?, password = ?, NombreE = ?, tipcoE = ? where correo = ?");
+            stmt = conn.prepareStatement("UPDATE entrenador SET correo = ?, password = ?, NombreE = ?, tipcoE = ? where correo = ?");
             stmt.setString(1, entrenador.getCorreo());
             stmt.setString(2, entrenador.getPassword());
             stmt.setString(3, entrenador.getNombreE());
@@ -82,7 +82,7 @@ public class EntrenadorDAO implements DAO {
         try {
             conn = new ConexionDB().getConexion();
             System.out.println("conexion establecida");
-            stmt = conn.prepareStatement("INSERT into Entrenador(correo, password, NombreE, tipoE) VALUES (?, ?, ?, ?)");
+            stmt = conn.prepareStatement("INSERT into entrenador(correo, password, NombreE, tipoE) VALUES (?, ?, ?, ?)");
             stmt.setString(1, entrenador.getCorreo());
             stmt.setString(2, entrenador.getPassword());
             stmt.setString(3, entrenador.getNombreE());
@@ -103,7 +103,7 @@ public class EntrenadorDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("DELETE FROM Entrenador WHERE Correo = ?");
+            stmt = conn.prepareStatement("DELETE FROM entrenador WHERE Correo = ?");
             stmt.setString(1, identifier);
             stmt.execute();
         } catch (Exception e) {

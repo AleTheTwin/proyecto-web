@@ -16,7 +16,7 @@ public class ClienteDAO implements DAO {
         try {
             conn = new ConexionDB().getConexion();
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Cliente");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM cliente");
             while(rs.next()) {
                 clientes.add(new Cliente(rs.getString("Correo"), rs.getString("Password"), rs.getString("NombreC"), rs.getInt("Edad"), rs.getBoolean("Sexo"), rs.getString("tipoCliente")));
             }
@@ -36,7 +36,7 @@ public class ClienteDAO implements DAO {
         Cliente cliente = null;
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("SELECT * FROM Cliente where correo = ?");
+            stmt = conn.prepareStatement("SELECT * FROM cliente where correo = ?");
             stmt.setString(1, identifier);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
@@ -59,7 +59,7 @@ public class ClienteDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("UPDATE Cliente SET correo = ?, password = ?, NombreC = ?, Edad = ?, Sexo = ?, tipcoCliente = ? where correo = ?");
+            stmt = conn.prepareStatement("UPDATE cliente SET correo = ?, password = ?, NombreC = ?, Edad = ?, Sexo = ?, tipcoCliente = ? where correo = ?");
             stmt.setString(1, cliente.getCorreo());
             stmt.setString(2, cliente.getPassword());
             stmt.setString(3, cliente.getNombreC());
@@ -68,6 +68,7 @@ public class ClienteDAO implements DAO {
             stmt.setString(6, cliente.getTipoCliente());
             stmt.setString(7, identifier);
             stmt.execute();
+            System.out.println("Actualizado");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -83,7 +84,7 @@ public class ClienteDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("INSERT into Cliente(correo, password, NombreC, Edad, Sexo, tipoCliente) VALUES (?, ?, ?, ?, ?, ?)");
+            stmt = conn.prepareStatement("INSERT into cliente(correo, password, NombreC, Edad, Sexo, tipoCliente) VALUES (?, ?, ?, ?, ?, ?)");
             stmt.setString(1, cliente.getCorreo());
             stmt.setString(2, cliente.getPassword());
             stmt.setString(3, cliente.getNombreC());
@@ -91,6 +92,7 @@ public class ClienteDAO implements DAO {
             stmt.setBoolean(5, cliente.isSexo());
             stmt.setString(6, cliente.getTipoCliente());
             stmt.execute();
+            System.out.println("Creado");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -105,9 +107,10 @@ public class ClienteDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("DELETE FROM Cliente WHERE Correo = ?");
+            stmt = conn.prepareStatement("DELETE FROM cliente WHERE Correo = ?");
             stmt.setString(1, identifier);
             stmt.execute();
+            System.out.println("Eliminado");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

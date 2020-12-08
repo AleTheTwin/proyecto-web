@@ -1,12 +1,17 @@
 package mx.uv;
+
 import mx.uv.DB.*;
 
 import static spark.Spark.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import javafx.beans.binding.ObjectExpression;
 import javafx.scene.effect.PerspectiveTransform;
 
 /**
@@ -25,6 +30,7 @@ public final class App {
         
 
         port(getHerokuAssignedPort());
+        System.out.println(getHerokuAssignedPort());
         options("/*", (request, response) -> {
 
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -52,12 +58,10 @@ public final class App {
             String pass;
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
-            Cliente cliente = new Cliente("correo@correo.com", "password", "nombreC", 16, false, "Novato");
-
             System.out.println("email: " + email);
             System.out.println("password: " + pass);
-          //  ClienteDAO clienteDAO = new ClienteDAO();
-            //Cliente cliente = (Cliente)clienteDAO.readByIdentifier(email);
+            ClienteDAO clienteDAO = new ClienteDAO();
+            Cliente cliente = (Cliente)clienteDAO.readByIdentifier(email);
             if(cliente != null) {
                 if(cliente.getPassword().equals(pass)) {
                     return email;
@@ -98,13 +102,24 @@ public final class App {
             return email;
 
         });
-        Cliente cliente = new Cliente("correo@correo.com", "password", "nombreC", 16, false, "Novato");
+        /*Cliente cliente = new Cliente("correo2@correo.com", "password", "nombreC", 16, true, "Novato");
         
         System.out.println(cliente);
 
         ClienteDAO cDAO= new ClienteDAO();
 
-        cDAO.create(cliente);
+        //cDAO.create(cliente);
+        ArrayList<Object> clientes = new ArrayList<Object>(); 
+        clientes = cDAO.readAll();
+        for(Object o : clientes) {
+            System.out.println((Cliente)o);
+        }
+        cDAO.delete("correo@correo.com");
+        //ArrayList<Object> clientes = new ArrayList<Object>(); 
+        clientes = cDAO.readAll();
+        for(Object o : clientes) {
+            System.out.println((Cliente)o);
+        }*/
     }
 
     static int getHerokuAssignedPort() {

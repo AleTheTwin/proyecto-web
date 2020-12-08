@@ -16,7 +16,7 @@ public class AdministradorDAO implements DAO {
         try {
             conn = new ConexionDB().getConexion();
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Administrador");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM administrador");
             while(rs.next()) {
                 administradores.add(new Administrador(rs.getString("Correo"), rs.getString("Password"), rs.getString("NombreA")));
             }
@@ -59,7 +59,7 @@ public class AdministradorDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("UPDATE Administrador SET correo = ?, password = ?, NombreA = ? where correo = ?");
+            stmt = conn.prepareStatement("UPDATE administrador SET correo = ?, password = ?, NombreA = ? where correo = ?");
             stmt.setString(1, administrador.getCorreo());
             stmt.setString(2, administrador.getPassword());
             stmt.setString(3, administrador.getNombreA());
@@ -80,7 +80,7 @@ public class AdministradorDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("INSERT into Administrador(correo, password, NombreA) VALUES (?, ?, ?)");
+            stmt = conn.prepareStatement("INSERT into administrador(correo, password, NombreA) VALUES (?, ?, ?)");
             stmt.setString(1, administrador.getCorreo());
             stmt.setString(2, administrador.getPassword());
             stmt.setString(3, administrador.getNombreA());
@@ -99,7 +99,7 @@ public class AdministradorDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("DELETE FROM Administrador WHERE Correo = ?");
+            stmt = conn.prepareStatement("DELETE FROM administrador WHERE Correo = ?");
             stmt.setString(1, identifier);
             stmt.execute();
         } catch (Exception e) {
