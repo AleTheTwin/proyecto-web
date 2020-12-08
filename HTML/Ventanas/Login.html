@@ -45,14 +45,9 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit" id="signin">Sign in</button>
-  <p class="text-muted"> No tienes una cuenta?<a href="#" class="text-decoration-none" id=registrate>Registrate aqui</a> </p>
-  <!-- Redireccionamiento -->
-  <script type="text/javascript">
-    document.getElementById("registrate").onclick = function () {
-        location.href = "/HTML/Ventanas/Registro.html";
-    };
-</script>
+  <button class="btn btn-lg btn-primary btn-block" type="button"  id="signin">Sign in</button>
+  <p class="text-muted"> No tienes una cuenta?<a href="/HTML/Ventanas/Registro.html" class="text-decoration-none" id=registrate>Registrate aqui</a> </p>
+
 <!-- Localizacion de todos los scripts -->
 <script src="/HTML/assets/dist/js/login.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

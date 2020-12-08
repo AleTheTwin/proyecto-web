@@ -2,7 +2,7 @@
 
 var bLogeo = document.getElementById('signin');
 bLogeo.addEventListener('click', function () {
-axios.post('http://localhost:4567/login',  {
+axios.post('https://gimnasio-sw.herokuapp.com/login',  {
     Email: document.getElementById('inputEmail').value,
     Password: document.getElementById('inputPassword').value
 })
