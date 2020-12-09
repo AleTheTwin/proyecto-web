@@ -2,7 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximun-scale=1.0, minimun-scale=1.0">
+
+<script>
+    var viewportContent = '';
+    if (window.devicePixelRatio = 1) {
+        viewportContent = 'width=device-width, initial-scale=0.51, maximum-scale=0.51, user-scalable=0, target-densityDpi=device-dpi';
+    } else if (window.devicePixelRatio == 2) {
+        viewportContent = 'width=device-width, initial-scale=0.51, maximum-scale=0.51, user-scalable=0';
+    } else if (window.devicePixelRatio == .78) {
+        viewportContent = 'width=device-width, initial-scale=0.51, maximum-scale=0.51, user-scalable=0, target-densityDpi=device-dpi';
+    } else if (window.devicePixelRatio == 1.5) {
+        viewportContent = 'width=device-width, initial-scale=0.51, maximum-scale=0.51, user-scalable=0, target-densityDpi=device-dpi';
+    }
+    $('head').append('<meta name="viewport" content="' + viewportContent + '">');
+</script>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
 <title>Registrarse</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
