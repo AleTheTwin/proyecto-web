@@ -1,10 +1,14 @@
 package mx.uv;
 
 import mx.uv.DB.*;
+import spark.ModelAndView;
+import spark.template.freemarker.FreeMarkerEngine;
 
 import static spark.Spark.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -102,6 +106,13 @@ public final class App {
             return email;
 
         });
+
+        get("/membresias", (request, response) ->{
+            Map<String, Object> atributos = new HashMap<>();
+
+            atributos.put("message", "HOLA");
+            return new ModelAndView(atributos, "membresias.ftl");
+        }, new FreeMarkerEngine());
     }
 
     static int getHerokuAssignedPort() {

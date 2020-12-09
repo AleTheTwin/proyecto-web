@@ -29,6 +29,12 @@
       <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+    <!--Freemarker-->
+    <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-template-freemarker</artifactId>
+      <version>2.7.1</version>
+    </dependency>
     <!--JSON-->
     <dependency>
       <groupId>com.google.code.gson</groupId>
