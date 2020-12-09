@@ -1,4 +1,4 @@
-var bLogeo = document.getElementById('signin');
+var bLogeo = document.getElementById('registrar');
     bLogeo.addEventListener('click', function () {
     axios.post('https://gimnasio-sw.herokuapp.com/login',  {
         Email: document.getElementById('inputEmail').value,
