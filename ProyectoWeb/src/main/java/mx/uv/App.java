@@ -31,7 +31,6 @@ public final class App {
         
 
         port(getHerokuAssignedPort());
-        System.out.println(getHerokuAssignedPort());
         options("/*", (request, response) -> {
 
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -110,6 +109,7 @@ public final class App {
         get("/hello", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("message", "Hello Freemarker!");
+            model.put("message2", "Bye Freemarker!");
             return new ModelAndView(model, "hello.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
     }

@@ -14,6 +14,17 @@ if(sesionCookie != "") {
     document.getElementById("botonRegistrate").href = "#";
 }
 
+axios.get("http://localhost:4567/hello")
+.then(function (response) {
+    var prueba = document.createElement("div");
+    prueba.appendChild(response.data)
+    document.getElementById("prueba").appendChild(prueba)
+    console.log(response)
+})
+.catch(function (error) {
+    console.log(error)
+})
+
 
 botonCerrarSesion.addEventListener('click', function () {
     deleteCookie("Sesion");
