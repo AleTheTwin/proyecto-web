@@ -83,7 +83,7 @@ public final class App {
             pass = peticion.get("Password").getAsString();
             nombre = peticion.get("NombreC").getAsString();
             edad = Integer.parseInt(peticion.get("Edad").getAsString());
-            if(peticion.get("Sexo").getAsString().equals("1")) {
+            if(peticion.get("Sexo").getAsString().equals("0")) {
                 sexo = true;
             } else {
                 sexo = false;
@@ -102,24 +102,6 @@ public final class App {
             return email;
 
         });
-        /*Cliente cliente = new Cliente("correo2@correo.com", "password", "nombreC", 16, true, "Novato");
-        
-        System.out.println(cliente);
-
-        ClienteDAO cDAO= new ClienteDAO();
-
-        //cDAO.create(cliente);
-        ArrayList<Object> clientes = new ArrayList<Object>(); 
-        clientes = cDAO.readAll();
-        for(Object o : clientes) {
-            System.out.println((Cliente)o);
-        }
-        cDAO.delete("correo@correo.com");
-        //ArrayList<Object> clientes = new ArrayList<Object>(); 
-        clientes = cDAO.readAll();
-        for(Object o : clientes) {
-            System.out.println((Cliente)o);
-        }*/
     }
 
     static int getHerokuAssignedPort() {
