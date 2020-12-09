@@ -10,8 +10,8 @@ if(sesionCookie != "") {
     document.getElementById("seccionTop").appendChild(botonCerrarSesion);
     document.getElementById("botonLogIn").innerHTML = sesionCookie;
     document.getElementById("botonLogIn").href = "#";
-    document.getElementById("botonLogIn").innerHTML = sesionCookie;
-    document.getElementById("botonLogIn").href = "#";
+    document.getElementById("botonRegistrate").innerHTML = "¡Visita tu perfil!";
+    document.getElementById("botonRegistrate").href = "#";
 }
 
 
