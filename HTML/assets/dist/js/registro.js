@@ -14,7 +14,7 @@ bRegistro.addEventListener('click', function () {
         })
         .then(function (response) {
             console.log(response.data);
-            if(response.data==document.getElementById('correoREG"').value){
+            if(response.data==document.getElementById('correoREG').value){
                 location.href = "/HTML/Ventanas/Index.html";
             }
             
