@@ -1,0 +1,116 @@
+body {
+	color: rgb(255, 255, 255);
+	background: #f3f3f380;
+    font-family: 'Roboto', sans-serif;
+    background-image: url(https://s2.best-wallpaper.net/wallpaper/2560x1600/1807/Blonde-girl-fitness-dumbbells-gym_2560x1600.jpg);
+    background-position: center;
+    
+}
+
+.form-control {
+	border-color: rgba(0, 0, 0, 0.596);
+	min-height: 41px;
+    box-shadow: none !important;
+    transition: 0.5s;
+}
+.form-control:focus {
+	border-color: #5cd3b4;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.form-control:hover{
+    opacity: 0.5;
+}
+
+.signup-form {
+	width: 500px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+.signup-form h2 {
+	color: rgb(255, 255, 255);
+	margin: 0 0 30px 0;
+	display: inline-block;
+	padding: 0 30px 10px 0;
+    border-bottom: 1px groove #c2f0f3d3;
+    
+}
+.signup-form form {
+	color: rgba(255, 255, 255, 0.877);
+	border-radius: 3px;
+	margin-bottom: 15px;
+	background: rgba(8, 2, 2, 0.493);
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form .form-group row {
+	margin-bottom: 20px;
+}
+.signup-form label {
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 2;
+}
+.signup-form input[type="checkbox"] {
+	position: relative;
+	top: 1px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;
+	background: #5cd3b4;
+	border: none;
+	margin-top: 20px;
+	min-width: 140px;
+}
+.signup-form .btn:hover, .signup-form .btn:focus {
+	background: #41cba9;
+	outline: none !important;
+}
+.signup-form a {
+	color: #5cd3b4;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	color: #3c86f5dc;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+}
+
+.box{
+    margin-top: 20px;
+    min-width: 140px;
+    
+}
+.box select{
+    background-color: #1d1b1b25;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    border: none;
+    transition: 0.3s;
+}
+.box select:hover{
+    opacity: 0.5;
+}
+.box option{
+    background-color: #000000b4;
+}
+
+.button_SignUp{
+    background-color: #000000b4;
+    color: #fff;
+    position: relative;
+    border-radius: 5px;
+    padding: 10px 150px;
+    transition: 0.3s;
+    border-color: #000000b4;
+}
+.button_SignUp:hover{
+    opacity: 0.5;
+}

@@ -11,6 +11,9 @@ axios.post('https://gimnasio-sw.herokuapp.com/login',  {
     if(response.data==document.getElementById('inputEmail').value){
         location.href = "/HTML/Ventanas/Index.html";
     }
+    else{
+        
+    }
     
 })
 .catch(function (error) {
