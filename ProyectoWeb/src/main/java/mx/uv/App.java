@@ -81,14 +81,14 @@ public final class App {
             String tipoCliente;
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
-            nombre = peticion.get("nombreC").getAsString();
-            edad = Integer.parseInt(peticion.get("edad").getAsString());
-            if(peticion.get("sexo").getAsString().equals("1")) {
+            nombre = peticion.get("NombreC").getAsString();
+            edad = Integer.parseInt(peticion.get("Edad").getAsString());
+            if(peticion.get("Sexo").getAsString().equals("Hombre")) {
                 sexo = true;
             } else {
                 sexo = false;
             }
-            tipoCliente = peticion.get("tipoCliente").getAsString();
+            tipoCliente = peticion.get("TipoCliente").getAsString();
 
             Cliente cliente = new Cliente(email, pass, nombre, edad, sexo, tipoCliente);
             

@@ -96,56 +96,64 @@ body {
 			</div>	
       	</div>			
         <div class="form-group row">
-			<label class="col-form-label col-4">Username</label>
+			<label class="col-form-label col-4">Nombre Completo</label>
 			<div class="col-8">
-                <input type="text" class="form-control" name="username" required="required">
+                <input type="text" class="form-control" name="username" required="required" id="inputNombreC">
             </div>        	
         </div>
 		<div class="form-group row">
-			<label class="col-form-label col-4">Email Address</label>
+			<label class="col-form-label col-4">Emai</label>
 			<div class="col-8">
-                <input type="email" class="form-control" name="email" required="required">
+                <input type="email" class="form-control" name="email" required="required" id="inputEmal">
             </div>        	
         </div>
 		<div class="form-group row">
-			<label class="col-form-label col-4">Password</label>
+			<label class="col-form-label col-4">Contraseña</label>
 			<div class="col-8">
-                <input type="password" class="form-control" name="password" required="required">
+                <input type="password" class="form-control" name="password" required="required" id="inputPassword">
             </div>        	
         </div>
 		<div class="form-group row">
-			<label class="col-form-label col-4">Confirm Password</label>
+			<label class="col-form-label col-4">Confirmar contraseña</label>
 			<div class="col-8">
-                <input type="password" class="form-control" name="confirm_password" required="required">
+                <input type="password" class="form-control" name="confirm_password" required="required" id="inputPasswordConfirm">
             </div>        	
         </div>
          <!-- Agregar seccion de ingreso de datos -->
          <div class="form-group row">
 			<label class="col-form-label col-4">Edad</label>
 			<div class="col-8">
-                <input type="text" class="form-control" name="edad" required="required">
+                <input type="text" class="form-control" name="edad" required="required" id="inputEdad">
             </div>        	
         </div>
 
-         <div class="form-group row" >
-			<label class="col-form-label col-4"> Sexo</label>
-			
-			<div class="dropdown"style = "position:relative; left:15px;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Seleccionar sexo
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Masculino</a>
-                  <a class="dropdown-item" href="#">Femenino</a>
-                </div>      	
+        <div class="form-group row" >
+			<label class="col-form-label col-4">Sexo</label>
+			<div style = "position:relative; left:20px; top:15px;">
+				<select class="form-select" aria-label="Default select example" id="inputSexo">
+					<option selected>Seleccione una opción</option>
+					<option value="1">Hombre</option>
+					<option value="2">Mujer</option>
+				  </select>  
+			</div>
+			 	
         </div>
 
-        <div class="form-group row"style = "position:relative; top:15px;left:15px;">
-			<label class="col-form-label col-4"> Tipo de usuario</label>
-			<div class="col-8"style = "position:relative; left:38px;top:15px">
-                <input type="text" class="form-control" name="Tipo de usuario" required="required">
-            </div>        	
-        </div>
+        <div class="form-group row" >
+			<label class="col-form-label col-4">Tipo de Cliente</label>
+			<div style = "position:relative; left:20px; top:15px;">
+				<select class="form-select" aria-label="Default select example" id="inputTipoC">
+					<option selected>Seleccione una opción</option>
+					<option value="1">Novato</option>
+					<option value="2">Intermedio</option>
+					<option value="3">Experto</option>
+				  </select>  
+			</div>
+			 	
+		</div>
+
+		<button class="btn btn-lg btn-primary btn-block" type="button"  id="registrar">Registrar</button>
+		
 
         <!-- Limite de seccion -->
 
@@ -156,6 +164,8 @@ body {
             location.href = "../Ventanas/Login.html";
         };
 </script>
+<script src="/HTML/assets/dist/js/register.js"></script>
+
 </div>
 </body>
 </html>
