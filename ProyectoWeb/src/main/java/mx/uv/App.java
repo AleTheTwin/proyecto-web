@@ -107,11 +107,10 @@ public final class App {
 
         });
 
-        get("/membresias", (request, response) ->{
-            Map<String, Object> atributos = new HashMap<>();
-
-            atributos.put("message", "HOLA");
-            return new ModelAndView(atributos, "membresias.ftl");
+        get("/hello", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("message", "Hello Freemarker!");
+            return new ModelAndView(model, "hello.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
     }
 
