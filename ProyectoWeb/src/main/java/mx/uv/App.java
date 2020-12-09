@@ -83,10 +83,10 @@ public final class App {
             pass = peticion.get("Password").getAsString();
             nombre = peticion.get("NombreC").getAsString();
             edad = Integer.parseInt(peticion.get("Edad").getAsString());
-            if(peticion.get("Sexo").getAsString().equals("0")) {
-                sexo = true;
-            } else {
+            if(peticion.get("Sexo").getAsString().equals("2")) {
                 sexo = false;
+            } else {
+                sexo = true;
             }
             tipoCliente = peticion.get("TipoCliente").getAsString();
             

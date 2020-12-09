@@ -1,6 +1,7 @@
 var bRegistro= document.getElementById('botonRegistro');
 bRegistro.addEventListener('click', function () {
     var pass = document.getElementById('contraseñaREG').value;
+    var email = document.getElementById('correoREG').value;
     var passConfirm = document.getElementById('concontraseñaREG').value;
     if(pass==passConfirm) {
         console.log("La contraseña coincide")
@@ -14,7 +15,7 @@ bRegistro.addEventListener('click', function () {
         })
         .then(function (response) {
             console.log(response.data);
-            if(response.data==document.getElementById('correoREG').value){
+            if(response.data==email){
                 location.href = "/HTML/Ventanas/Index.html";
             }
             
