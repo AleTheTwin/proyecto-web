@@ -81,14 +81,17 @@ public final class App {
             String tipoCliente;
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
-            nombre = peticion.get("nombreC").getAsString();
-            edad = Integer.parseInt(peticion.get("edad").getAsString());
-            if(peticion.get("sexo").getAsString().equals("1")) {
+            nombre = peticion.get("NombreC").getAsString();
+            edad = Integer.parseInt(peticion.get("Edad").getAsString());
+            if(peticion.get("Sexo").getAsString().equals("0")) {
                 sexo = true;
             } else {
                 sexo = false;
             }
-            tipoCliente = peticion.get("tipoCliente").getAsString();
+            tipoCliente = peticion.get("TipoCliente").getAsString();
+            
+            System.out.println("email: " + email);
+            System.out.println("password: " + pass);
 
             Cliente cliente = new Cliente(email, pass, nombre, edad, sexo, tipoCliente);
             
@@ -99,24 +102,6 @@ public final class App {
             return email;
 
         });
-        /*Cliente cliente = new Cliente("correo2@correo.com", "password", "nombreC", 16, true, "Novato");
-        
-        System.out.println(cliente);
-
-        ClienteDAO cDAO= new ClienteDAO();
-
-        //cDAO.create(cliente);
-        ArrayList<Object> clientes = new ArrayList<Object>(); 
-        clientes = cDAO.readAll();
-        for(Object o : clientes) {
-            System.out.println((Cliente)o);
-        }
-        cDAO.delete("correo@correo.com");
-        //ArrayList<Object> clientes = new ArrayList<Object>(); 
-        clientes = cDAO.readAll();
-        for(Object o : clientes) {
-            System.out.println((Cliente)o);
-        }*/
     }
 
     static int getHerokuAssignedPort() {
