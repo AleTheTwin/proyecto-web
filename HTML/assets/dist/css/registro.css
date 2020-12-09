@@ -3,7 +3,7 @@ body {
 	background: #f3f3f380;
     font-family: 'Roboto', sans-serif;
     background-image: url(https://s2.best-wallpaper.net/wallpaper/2560x1600/1807/Blonde-girl-fitness-dumbbells-gym_2560x1600.jpg);
-    background-position: center;
+	background-size: cover;
     
 }
 
