@@ -1,4 +1,8 @@
-membresiaLoad(function(){
-var membresia1aux =document.getElementById("membresia1");
-membresia1aux.value = "ewe";
-})
+window.onload=function(){
+    function membresiaload1() {
+ document.getElementById("membresia1").innerHTML = "Membresia1";
+
+}
+membresiaload1();
+}
+
