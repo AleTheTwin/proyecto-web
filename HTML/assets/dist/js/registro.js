@@ -16,7 +16,7 @@ bRegistro.addEventListener('click', function () {
         .then(function (response) {
             console.log(response.data);
             if(response.data==email){
-                //location.href = "/HTML/Ventanas/Index.html";
+                location.href = "/HTML/Ventanas/Index.html";
             }
             
         })
