@@ -58,6 +58,7 @@ public final class App {
             String pass;
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
+            pass = Hash.getHash(pass);
             System.out.println("email: " + email);
             System.out.println("password: " + pass);
             ClienteDAO clienteDAO = new ClienteDAO();
@@ -84,6 +85,7 @@ public final class App {
             String tipoCliente;
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
+            pass = Hash.getHash(pass);
             nombre = peticion.get("NombreC").getAsString();
             edad = Integer.parseInt(peticion.get("Edad").getAsString());
             if(peticion.get("Sexo").getAsString().equals("2")) {
@@ -92,20 +94,16 @@ public final class App {
                 sexo = true;
             }
             tipoCliente = peticion.get("TipoCliente").getAsString();
-            
-            System.out.println("email: " + email);
-            System.out.println("password: " + pass);
 
             Cliente cliente = new Cliente(email, pass, nombre, edad, sexo, tipoCliente);
-            
-            System.out.println(cliente);
             ClienteDAO clienteDAO = new ClienteDAO();
+            Mail.enviarEmail(nombre, email);
             clienteDAO.create(cliente);
             
             return email;
 
         });
-
+        
         get("/hello", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("message", "Hello Freemarker!");

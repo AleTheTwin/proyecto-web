@@ -23,6 +23,12 @@
     <jacoco.unit-tests.limit.method-complexity>5</jacoco.unit-tests.limit.method-complexity>
   </properties>
   <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.libj/mail -->
+    <dependency>
+        <groupId>org.libj</groupId>
+        <artifactId>mail</artifactId>
+        <version>0.4.3</version>
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>

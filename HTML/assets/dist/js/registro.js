@@ -1,13 +1,14 @@
 var bRegistro= document.getElementById('botonRegistro');
 bRegistro.addEventListener('click', function () {
     var pass = document.getElementById('contraseñaREG').value;
+    var encodedPassword = window.btoa(pass);
     var email = document.getElementById('correoREG').value;
     var passConfirm = document.getElementById('concontraseñaREG').value;
     if(pass==passConfirm) {
         console.log("La contraseña coincide")
         axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
             Email: document.getElementById('correoREG').value,
-            Password: document.getElementById('contraseñaREG').value,
+            Password: encodedPassword,
             Edad: document.getElementById('edadREG').value,
             Sexo: document.getElementById('sexBox').value,
             NombreC: document.getElementById('usuarioREG').value,

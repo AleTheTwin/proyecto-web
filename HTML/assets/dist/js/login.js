@@ -1,10 +1,11 @@
 
 
 var bLogeo = document.getElementById('signin');
+var encodedPassword = window.btoa(document.getElementById('inputPassword').value)
 bLogeo.addEventListener('click', function () {
     axios.post('https://gimnasio-sw.herokuapp.com/login',  {
         Email: document.getElementById('inputEmail').value,
-        Password: document.getElementById('inputPassword').value
+        Password:encodedPassword
     })
     .then(function (response) {
         console.log(response.data);
