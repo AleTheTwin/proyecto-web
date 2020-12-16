@@ -1,8 +1,10 @@
-
-
 var bLogeo = document.getElementById('signin');
 var encodedPassword = window.btoa(document.getElementById('inputPassword').value)
+var alerta = document.getElementById('alerta');
+alerta.style.display = 'none';
+
 bLogeo.addEventListener('click', function () {
+    alerta.style.display = 'none';
     axios.post('https://gimnasio-sw.herokuapp.com/login',  {
         Email: document.getElementById('inputEmail').value,
         Password:encodedPassword
@@ -14,6 +16,8 @@ bLogeo.addEventListener('click', function () {
             location.href = "/HTML/Ventanas/Index.html";
         }
         else{
+            alerta.style.display = 'inline';
+            document.getElementById('inputPassword').value = "";
             setCookie("Sesion", "", 0)
         }
         

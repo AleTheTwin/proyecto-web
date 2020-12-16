@@ -97,6 +97,11 @@ public final class App {
 
             Cliente cliente = new Cliente(email, pass, nombre, edad, sexo, tipoCliente);
             ClienteDAO clienteDAO = new ClienteDAO();
+            Cliente clienteP = null;
+            clienteP = (Cliente)clienteDAO.readByIdentifier(email);
+            if(clienteP != null) {
+                return "0";
+            }
             Mail.enviarEmail(nombre, email);
             clienteDAO.create(cliente);
             

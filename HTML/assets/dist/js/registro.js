@@ -1,34 +1,55 @@
 var bRegistro= document.getElementById('botonRegistro');
+
+var alerta = document.getElementById('alerta');
+var alertaContenido = document.getElementById("alerta-in");
+alerta.style.display = 'none';
+
+
 bRegistro.addEventListener('click', function () {
+    alerta.style.display = 'none';
     var pass = document.getElementById('contraseñaREG').value;
     var encodedPassword = window.btoa(pass);
     var email = document.getElementById('correoREG').value;
     var passConfirm = document.getElementById('concontraseñaREG').value;
+    
     if(pass==passConfirm) {
-        console.log("La contraseña coincide")
-        axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
-            Email: document.getElementById('correoREG').value,
-            Password: encodedPassword,
-            Edad: document.getElementById('edadREG').value,
-            Sexo: document.getElementById('sexBox').value,
-            NombreC: document.getElementById('usuarioREG').value,
-            TipoCliente: document.getElementById('userBox').value
-        })
-        .then(function (response) {
-            console.log(response.data);
-            if(response.data==email){
-                setCookie("Sesion", response.data, 0)
-                location.href = "/HTML/Ventanas/Index.html";
+        if(document.getElementById('sexBox').value != "Empty") {
+            if(document.getElementById('userBox').value != "Empty") {
+                console.log(document.getElementById('userBox').value)
+                /*axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
+                    Email: document.getElementById('correoREG').value,
+                    Password: encodedPassword,
+                    Edad: document.getElementById('edadREG').value,
+                    Sexo: document.getElementById('sexBox').value,
+                    NombreC: document.getElementById('usuarioREG').value,
+                    TipoCliente: document.getElementById('userBox').value
+                })
+                .then(function (response) {
+                    console.log(response.data);
+                    if(response.data==email){
+                        setCookie("Sesion", response.data, 0)
+                        location.href = "/HTML/Ventanas/Index.html";
+                    } else {
+                        setCookie("Sesion", "", 0)
+                    }
+                    
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })*/
             } else {
-                setCookie("Sesion", "", 0)
+                alertaContenido.innerHTML = "Seleccione el tipo de usuario"
+                alerta.style.display = 'inline'
             }
-            
-        })
-        .catch(function (error) {
-            console.log(error)
-        })
+
+        } else {
+            alertaContenido.innerHTML = "Seleccione el sexo"
+            alerta.style.display = 'inline';
+        }
+        
     } else {
-        console.log("La contraseña no coincide")
+        alertaContenido.innerHTML = "Las contraseñas no coinciden"
+        alerta.style.display = 'inline';
     }
 })
 
