@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -19,6 +20,7 @@ import com.google.gson.JsonParser;
  * Hello world!
  */
 public final class App {
+    
     private App() {
     }
 
@@ -101,12 +103,24 @@ public final class App {
             clienteP = (Cliente)clienteDAO.readByIdentifier(email);
             if(clienteP != null) {
                 return "0";
+            } else {
+                Mail.enviarEmail(nombre, email);
+                clienteDAO.create(cliente);
             }
-            Mail.enviarEmail(nombre, email);
-            clienteDAO.create(cliente);
-            
             return email;
 
+        });
+
+        get("/membresias", (request, response) -> {
+            Gson gson = new Gson();
+            Map<String, Membresia> membresiasMap = new HashMap<>();
+            MembresiaDAO membresiaDAO = new MembresiaDAO();
+            ArrayList<Object> lista = membresiaDAO.readAll();
+            for(Object o : lista) {
+                membresiasMap.put(((Membresia)o).getId(), (Membresia)o);
+            }
+            
+            return gson.toJson(membresiasMap.values());
         });
         
         get("/hello", (request, response) -> {

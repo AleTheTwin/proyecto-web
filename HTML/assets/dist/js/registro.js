@@ -11,46 +11,65 @@ bRegistro.addEventListener('click', function () {
     var encodedPassword = window.btoa(pass);
     var email = document.getElementById('correoREG').value;
     var passConfirm = document.getElementById('concontraseñaREG').value;
-    
-    if(pass==passConfirm) {
-        if(document.getElementById('sexBox').value != "Empty") {
-            if(document.getElementById('userBox').value != "Empty") {
-                console.log(document.getElementById('userBox').value)
-                /*axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
-                    Email: document.getElementById('correoREG').value,
-                    Password: encodedPassword,
-                    Edad: document.getElementById('edadREG').value,
-                    Sexo: document.getElementById('sexBox').value,
-                    NombreC: document.getElementById('usuarioREG').value,
-                    TipoCliente: document.getElementById('userBox').value
-                })
-                .then(function (response) {
-                    console.log(response.data);
-                    if(response.data==email){
-                        setCookie("Sesion", response.data, 0)
-                        location.href = "/HTML/Ventanas/Index.html";
-                    } else {
-                        setCookie("Sesion", "", 0)
-                    }
-                    
-                })
-                .catch(function (error) {
-                    console.log(error)
-                })*/
-            } else {
-                alertaContenido.innerHTML = "Seleccione el tipo de usuario"
-                alerta.style.display = 'inline'
-            }
+    if(document.getElementById('usuarioREG').value != "") {
+        if(email != "") {
+            if(pass != "") {
+                if(pass==passConfirm) {
+                    if(document.getElementById('sexBox').value != "Empty") {
+                        if(document.getElementById('userBox').value != "Empty") {
+                            console.log(document.getElementById('userBox').value)
+                            axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
+                                Email: document.getElementById('correoREG').value,
+                                Password: encodedPassword,
+                                Edad: document.getElementById('edadREG').value,
+                                Sexo: document.getElementById('sexBox').value,
+                                NombreC: document.getElementById('usuarioREG').value,
+                                TipoCliente: document.getElementById('userBox').value
+                            })
+                            .then(function (response) {
+                                console.log(response.data);
+                                if(response.data==email){
+                                    setCookie("Sesion", response.data, 0)
+                                    location.href = "/HTML/Ventanas/Index.html";
+                                } else {
+                                    alertaContenido.innerHTML = "El correo ya existe"
+                                    alerta.style.display = 'inline';
+                                    setCookie("Sesion", "", 0)
+                                }
+                                
+                            })
+                            .catch(function (error) {
+                                console.log(error)
+                            })
+                        } else {
+                            alertaContenido.innerHTML = "Seleccione el tipo de usuario"
+                            alerta.style.display = 'inline'
+                        }
 
+                    } else {
+                        alertaContenido.innerHTML = "Seleccione el sexo"
+                        alerta.style.display = 'inline';
+                    }
+                    
+                } else {
+                    alertaContenido.innerHTML = "Las contraseñas no coinciden"
+                    alerta.style.display = 'inline';
+                }
+            } else {
+                alertaContenido.innerHTML = "Ingrese la contraseña"
+                alerta.style.display = 'inline';
+            }
         } else {
-            alertaContenido.innerHTML = "Seleccione el sexo"
+            alertaContenido.innerHTML = "Ingrese el correo"
             alerta.style.display = 'inline';
         }
         
+        
     } else {
-        alertaContenido.innerHTML = "Las contraseñas no coinciden"
+        alertaContenido.innerHTML = "Ingrese el nombre del usuario"
         alerta.style.display = 'inline';
     }
+    
 })
 
 function delCookie(nombre){
