@@ -33,6 +33,7 @@
 body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
+  background-image: ;
 }
 
 .text-primary-p {
@@ -285,3 +286,37 @@ color: #000000b7;
 .title_Cards{
 color: #29a8f79c;
 }
+
+.camposEdit{
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 3px;
+  border-radius: 12px;
+  background-color: #2e4a66;
+  transition: 0.3s;
+}
+.camposEdit:hover{
+  opacity: 0.5;
+}
+.textBox   {
+  position: relative;
+  top: 10px;
+  left: 20px;
+
+}
+.texto{
+  font-family: 'Lato', sans-serif; 
+  font-weight: 100;
+  color: #e0e2e2da;
+}
+.camposEdit > i  {
+  margin-bottom: 20px;
+  padding: 20px;
+
+}
+
+.inputs{
+  height: 25px;
+width: 500px;
+}
+

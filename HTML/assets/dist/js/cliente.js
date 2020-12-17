@@ -73,3 +73,24 @@ function getCookie(correo){
   return  "";
 }
 
+
+var number = document.getElementById('inputEdadCLI');
+
+// No acepta Letras
+function isNumber(e) {
+  evt = (evt) ? evt : window.event;
+  let charCode = (evt.which) ? evt.which : evt.keyCode;
+  if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+    evt.preventDefault();
+  } else {
+    return true;
+  }
+}
+
+// No puede ser mayor a 80
+  function less80(e) {
+  if(document.getElementById('inputEdadCLI').value > 80){
+    alert("La edad es mayor a 80")
+    document.getElementById('inputEdadCLI').value=0;
+  }
+}

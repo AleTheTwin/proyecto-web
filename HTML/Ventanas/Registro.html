@@ -53,7 +53,8 @@
          <div class="form-group row">
 			<label class="col-form-label col-4">Edad</label>
 			<div class="col-8">
-                <input type="number" class="form-control" name="edad" id = "edadREG" required="required">
+                <input type="number" class="form-control" min="0" max="80" oninput="validity.valid||(value='');" 
+				onpress="isNumber(event)" ,onpress="less80(event)" name="edad" id = "edadREG" required="required">
             </div>        	
         </div>
 
