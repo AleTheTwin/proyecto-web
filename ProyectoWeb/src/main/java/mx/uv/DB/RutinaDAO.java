@@ -16,9 +16,9 @@ public class RutinaDAO implements DAO {
         try {
             conn = new ConexionDB().getConexion();
             stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Rutina");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM rutina");
             while(rs.next()) {
-                rutinas.add(new Rutina(rs.getString("Id"), rs.getString("Descripcion")));
+                rutinas.add(new Rutina(rs.getString("id"), rs.getString("descripcion")));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,11 +36,11 @@ public class RutinaDAO implements DAO {
         Rutina rutina = null;
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("SELECT * FROM Rutina where id = ?");
+            stmt = conn.prepareStatement("SELECT * FROM rutina where id = ?");
             stmt.setString(1, identifier);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
-                rutina = new Rutina(rs.getString("Id"), rs.getString("Descripcion"));
+                rutina = new Rutina(rs.getString("id"), rs.getString("descripcion"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,7 +59,7 @@ public class RutinaDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("UPDATE Rutina SET id = ?, Descripcion = ? where id = ?");
+            stmt = conn.prepareStatement("UPDATE rutina SET id = ?, descripcion = ? where id = ?");
             stmt.setString(1, rutina.getId());
             stmt.setString(2, rutina.getDescripcion());
             stmt.setString(3, identifier);
@@ -79,7 +79,7 @@ public class RutinaDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("INSERT into Rutina(id, Descripcion) VALUES (?, ?)");
+            stmt = conn.prepareStatement("INSERT into rutina(id, descripcion) VALUES (?, ?)");
             stmt.setString(1, rutina.getId());
             stmt.setString(2, rutina.getDescripcion());
             stmt.execute();
@@ -97,7 +97,7 @@ public class RutinaDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("DELETE FROM Rutina WHERE id = ?");
+            stmt = conn.prepareStatement("DELETE FROM rutina WHERE id = ?");
             stmt.setString(1, identifier);
             stmt.execute();
         } catch (Exception e) {

@@ -51,6 +51,27 @@ public class MembresiaDAO implements DAO {
 
     }
 
+    public Object getByCliente(String identifier) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        Membresia membresia = null;
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("SELECT id, descripcion, precio FROM paga, cliente, membresia where id = ?");
+            stmt.setString(1, identifier);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                membresia = new Membresia(rs.getString("Id"), rs.getString("Descripcion"), rs.getDouble("precio"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+        return membresia;
+
+    }
+
     @Override
     public void update(Object objeto, String identifier) {
         Connection conn = null;

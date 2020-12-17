@@ -1,18 +1,19 @@
 var bLogeo = document.getElementById('signin');
-var encodedPassword = window.btoa(document.getElementById('inputPassword').value)
 var alerta = document.getElementById('alerta');
+var encodedPassword;
 alerta.style.display = 'none';
 
 bLogeo.addEventListener('click', function () {
+    encodedPassword = window.btoa(document.getElementById('inputPassword').value)
     alerta.style.display = 'none';
     axios.post('https://gimnasio-sw.herokuapp.com/login',  {
         Email: document.getElementById('inputEmail').value,
-        Password:encodedPassword
+        Password: encodedPassword
     })
     .then(function (response) {
         console.log(response.data);
         if(response.data==document.getElementById('inputEmail').value){
-            setCookie("Sesion", response.data, 0)
+            setCookie("Sesion", response.data, 0)   
             location.href = "/HTML/Ventanas/Index.html";
         }
         else{

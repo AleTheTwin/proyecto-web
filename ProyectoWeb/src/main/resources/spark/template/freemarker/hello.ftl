@@ -1,2 +1,18 @@
-<h1>${message}</h1 id="message1">
-<h1>${message2}</h1>
+<html>
+<head>
+  <title>Rutinas</title>
+</head>
+<body>
+  <h1>Rutinas</h1>
+  <button href="https://www.google.com" >${email}</button>
+
+  <p>Pagina de rutinas</p>
+
+  <ul>
+    <#list rutinas as rutina>
+      <button>id de la rutina:  ${rutina.id} , descripcion:  ${rutina.descripcion}</button>
+    </#list>
+  </ul>
+
+</body>
+</html>

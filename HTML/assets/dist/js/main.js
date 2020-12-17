@@ -5,7 +5,6 @@ botonCerrarSesion.href = "#";
 botonCerrarSesion.id = "cerrarSesion";
 botonCerrarSesion.style = "position:relative; top: 8px;"
 if(sesionCookie != "") {
-    //aquí desactivas el botón login y registro en cambio pone botón de usuario
     botonCerrarSesion.innerHTML = "Cerrar sesion";
     document.getElementById("seccionTop").appendChild(botonCerrarSesion);
     document.getElementById("botonLogIn").innerHTML = sesionCookie;
@@ -13,17 +12,6 @@ if(sesionCookie != "") {
     document.getElementById("botonRegistrate").innerHTML = "¡Visita tu perfil!";
     document.getElementById("botonRegistrate").href = "#";
 }
-
-axios.get("http://localhost:4567/hello")
-.then(function (response) {
-    var prueba = document.createElement("div");
-    prueba.appendChild(response.data)
-    document.getElementById("prueba").appendChild(prueba)
-    console.log(response)
-})
-.catch(function (error) {
-    console.log(error)
-})
 
 
 botonCerrarSesion.addEventListener('click', function () {

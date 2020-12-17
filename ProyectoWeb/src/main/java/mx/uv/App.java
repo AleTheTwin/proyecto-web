@@ -8,6 +8,7 @@ import static spark.Spark.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -61,8 +62,6 @@ public final class App {
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
             pass = Hash.getHash(pass);
-            System.out.println("email: " + email);
-            System.out.println("password: " + pass);
             ClienteDAO clienteDAO = new ClienteDAO();
             Cliente cliente = (Cliente)clienteDAO.readByIdentifier(email);
             if(cliente != null) {
@@ -122,11 +121,39 @@ public final class App {
             
             return gson.toJson(membresiasMap.values());
         });
+
+        get("/membresiaByEmail", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+            Gson gson = new Gson();
+
+            String email = peticion.get("Email").getAsString();
+            Map<String, Membresia> membresiaMap = new HashMap<>();
+            MembresiaDAO membresiaDAO = new MembresiaDAO();
+            //Membresia membresia = (Membresia)membresiaDAO.getByCliente();
+            
+            
+            return gson.toJson(membresiaMap.values());
+        });
         
-        get("/hello", (request, response) -> {
+        get("/rutinas", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+            
             Map<String, Object> model = new HashMap<>();
-            model.put("message", "Hello Freemarker!");
-            model.put("message2", "Bye Freemarker!");
+            List<Rutina> rutinas = new ArrayList<Rutina>();
+            RutinaDAO rutinaDAO = new RutinaDAO();
+            ArrayList<Object> objects = rutinaDAO.readAll();
+
+            String email = peticion.get("Email").getAsString();
+            for (Object o : objects ) {
+                rutinas.add((Rutina)o);
+            }
+
+            model.put("rutinas", rutinas);
+            model.put("email", email);
             return new ModelAndView(model, "hello.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
     }
