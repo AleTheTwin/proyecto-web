@@ -136,6 +136,18 @@ public final class App {
             
             return gson.toJson(membresiaMap.values());
         });
+
+        post("/getNombreSesion", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String email = peticion.get("Email").getAsString();
+            ClienteDAO clienteDAO = new ClienteDAO();
+            Cliente cliente = (Cliente)clienteDAO.readByIdentifier(email);
+                        
+            return cliente.getNombreC();
+        });
         
         get("/rutinas", (request, response) -> {
             JsonParser parser = new JsonParser();
