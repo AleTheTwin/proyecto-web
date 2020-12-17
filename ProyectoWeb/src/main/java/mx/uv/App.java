@@ -30,15 +30,6 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        /*
-        EntrenadorDAO e = new EntrenadorDAO();
-        String pass1 = "pass";
-        pass1 = Hash.getHash(pass1);
-        Entrenador en = new Entrenador("entrenador2@correo.com", pass1, "Manu", "Noob");
-        e.create(en);
-        */
-        
-
         port(getHerokuAssignedPort());
         options("/*", (request, response) -> {
 
@@ -135,6 +126,35 @@ public final class App {
             } else {
                 //Mail.enviarEmail(nombre, email);
                 clienteDAO.create(cliente);
+            }
+            return email;
+
+        });
+
+        post("/registroEntrenador", (req, res) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(req.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String email;
+            String pass;
+            String nombre;
+            String tipoEntrenador;
+            email = peticion.get("Email").getAsString();
+            pass = peticion.get("Password").getAsString();
+            pass = Hash.getHash(pass);
+            nombre = peticion.get("NombreE").getAsString();
+            tipoEntrenador = peticion.get("TipoEntrenador").getAsString();
+
+            Entrenador cliente = new Entrenador(email, pass, nombre, tipoEntrenador);
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            Entrenador entrenadorP = null;
+            entrenadorP = (Entrenador)entrenadorDAO.readByIdentifier(email);
+            if(entrenadorP != null) {
+                return "0";
+            } else {
+                //Mail.enviarEmail(nombre, email);
+                entrenadorDAO.create(cliente);
             }
             return email;
 
