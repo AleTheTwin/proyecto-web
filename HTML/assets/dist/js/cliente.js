@@ -47,9 +47,37 @@ function desplegarMembresia(){
   })
   
   
-  
+  document.getElementById('configuracion').style.display="none";
   document.getElementById('membresias').style.display="flex";
 }
+
+
+
+function desplegarConfiguracion(){
+  var precio = document.getElementById("precioMembresia");
+  var descripcion = document.getElementById("descripcionMembresia");
+  var id = document.getElementById("idMembresia");
+  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+      Email: sesion
+  })
+  .then(function (response) {
+    precio.innerHTML = response.data.precio;
+    descripcion.innerHTML = response.data.descripcion;
+    id.innerHTML = response.data.id;
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  
+  
+  document.getElementById('membresias').style.display="none";
+  document.getElementById('configuracion').style.display="flex";
+}
+
+
+
+
+
 
 
 function closeSidebar() {
