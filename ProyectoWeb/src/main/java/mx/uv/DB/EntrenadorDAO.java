@@ -86,7 +86,7 @@ public class EntrenadorDAO implements DAO {
             stmt.setString(1, entrenador.getCorreo());
             stmt.setString(2, entrenador.getPassword());
             stmt.setString(3, entrenador.getNombreE());
-            stmt.setString(6, entrenador.getTipoE());
+            stmt.setString(4, entrenador.getTipoE());
             stmt.execute();
         } catch (Exception e) {
             System.out.println("Fallo en la creacion: \n");

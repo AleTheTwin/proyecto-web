@@ -30,7 +30,13 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-
+        /*
+        EntrenadorDAO e = new EntrenadorDAO();
+        String pass1 = "pass";
+        pass1 = Hash.getHash(pass1);
+        Entrenador en = new Entrenador("entrenador2@correo.com", pass1, "Manu", "Noob");
+        e.create(en);
+        */
         
 
         port(getHerokuAssignedPort());
@@ -59,6 +65,8 @@ public final class App {
 
             String email;
             String pass;
+            boolean isEntrenador;
+            
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
             pass = Hash.getHash(pass);
@@ -66,6 +74,28 @@ public final class App {
             Cliente cliente = (Cliente)clienteDAO.readByIdentifier(email);
             if(cliente != null) {
                 if(cliente.getPassword().equals(pass)) {
+                    return email;
+                }
+            }
+            return "0";
+
+        });
+
+        post("/loginEntrenador", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String email;
+            String pass;
+            
+            email = peticion.get("Email").getAsString();
+            pass = peticion.get("Password").getAsString();
+            pass = Hash.getHash(pass);
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            Entrenador entrenador = (Entrenador)entrenadorDAO.readByIdentifier(email);
+            if(entrenador != null) {
+                if(entrenador.getPassword().equals(pass)) {
                     return email;
                 }
             }
@@ -103,7 +133,7 @@ public final class App {
             if(clienteP != null) {
                 return "0";
             } else {
-                Mail.enviarEmail(nombre, email);
+                //Mail.enviarEmail(nombre, email);
                 clienteDAO.create(cliente);
             }
             return email;
@@ -122,19 +152,21 @@ public final class App {
             return gson.toJson(membresiasMap.values());
         });
 
-        get("/membresiaByEmail", (request, response) -> {
+        post("/membresiaByEmail", (request, response) -> {
             JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
             Gson gson = new Gson();
 
             String email = peticion.get("Email").getAsString();
-            Map<String, Membresia> membresiaMap = new HashMap<>();
+            System.out.println(email);
             MembresiaDAO membresiaDAO = new MembresiaDAO();
-            //Membresia membresia = (Membresia)membresiaDAO.getByCliente();
+            Membresia membresia = (Membresia)membresiaDAO.getByCliente(email);
+            Map<String, Object> model = new HashMap<>();
+            model.put("Membresia", membresia);
             
             
-            return gson.toJson(membresiaMap.values());
+            return "" + gson.toJson(membresia);
         });
 
         post("/getNombreSesion", (request, response) -> {

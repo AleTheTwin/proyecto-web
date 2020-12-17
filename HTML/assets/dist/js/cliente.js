@@ -7,8 +7,7 @@ axios.post('http://localhost:4567/getNombreSesion',  {
       Email: sesion
 })
 .then(function (response) {
-    console.log(response.data);
-    nombreCliente.innerHTML = "Hola " + response.data;
+    nombreCliente.innerHTML = "Hola  " + response.data;
     nombreCliente2.innerHTML = response.data;
 })
 .catch(function (error) {
@@ -32,8 +31,26 @@ function toggleSidebar() {
 }
 
 function desplegarMembresia(){
-    document.getElementById('membresias').style.display="flex";
+  var precio = document.getElementById("precioMembresia");
+  var descripcion = document.getElementById("descripcionMembresia");
+  var id = document.getElementById("idMembresia");
+  axios.post('http://localhost:4567/membresiaByEmail',  {
+      Email: sesion
+  })
+  .then(function (response) {
+    precio.innerHTML = response.data.precio;
+    descripcion.innerHTML = response.data.descripcion;
+    id.innerHTML = response.data.id;
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  
+  
+  
+  document.getElementById('membresias').style.display="flex";
 }
+
 
 function closeSidebar() {
   if (sidebarOpen) {

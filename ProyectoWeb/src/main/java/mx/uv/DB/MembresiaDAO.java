@@ -57,11 +57,12 @@ public class MembresiaDAO implements DAO {
         Membresia membresia = null;
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("SELECT id, descripcion, precio FROM paga, cliente, membresia where id = ?");
+            stmt = conn.prepareStatement("SELECT * FROM membresiacliente where Correo =  ?");
             stmt.setString(1, identifier);
             ResultSet rs = stmt.executeQuery();
             while(rs.next()) {
-                membresia = new Membresia(rs.getString("Id"), rs.getString("Descripcion"), rs.getDouble("precio"));
+                System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                membresia = new Membresia(rs.getString(1), rs.getString(2), rs.getDouble(3));
             }
         } catch (Exception e) {
             e.printStackTrace();
