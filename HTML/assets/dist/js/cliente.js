@@ -34,7 +34,7 @@ function desplegarMembresia(){
   var precio = document.getElementById("precioMembresia");
   var descripcion = document.getElementById("descripcionMembresia");
   var id = document.getElementById("idMembresia");
-  axios.post('http://localhost:4567/membresiaByEmail',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
       Email: sesion
   })
   .then(function (response) {
