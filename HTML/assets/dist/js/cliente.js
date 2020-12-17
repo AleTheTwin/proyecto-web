@@ -3,7 +3,7 @@ var sesion = getCookie("Sesion")
 var nombreCliente = document.getElementById("nombreCliente")
 var nombreCliente2 = document.getElementById("nombreCliente2")
 
-axios.post('http://localhost:4567/getNombreSesion',  {
+axios.post('https://gimnasio-sw.herokuapp.com/getNombreSesion',  {
       Email: sesion
 })
 .then(function (response) {
