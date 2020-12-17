@@ -3,12 +3,11 @@ var sesion = getCookie("Sesion")
 var nombreCliente = document.getElementById("nombreCliente")
 var nombreCliente2 = document.getElementById("nombreCliente2")
 
-axios.post('http://localhost:4567/getNombreSesion',  {
+axios.post('https://gimnasio-sw.herokuapp.com/getNombreSesion',  {
       Email: sesion
 })
 .then(function (response) {
-    console.log(response.data);
-    nombreCliente.innerHTML = "Hola " + response.data;
+    nombreCliente.innerHTML = "Hola  " + response.data;
     nombreCliente2.innerHTML = response.data;
 })
 .catch(function (error) {
@@ -32,8 +31,26 @@ function toggleSidebar() {
 }
 
 function desplegarMembresia(){
-    document.getElementById('membresias').style.display="flex";
+  var precio = document.getElementById("precioMembresia");
+  var descripcion = document.getElementById("descripcionMembresia");
+  var id = document.getElementById("idMembresia");
+  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+      Email: sesion
+  })
+  .then(function (response) {
+    precio.innerHTML = response.data.precio;
+    descripcion.innerHTML = response.data.descripcion;
+    id.innerHTML = response.data.id;
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  
+  
+  
+  document.getElementById('membresias').style.display="flex";
 }
+
 
 function closeSidebar() {
   if (sidebarOpen) {

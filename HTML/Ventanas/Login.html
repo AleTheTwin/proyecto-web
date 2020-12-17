@@ -41,18 +41,24 @@
       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus></input>
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Password" required></input>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" >
+        <label class="form-check-label text mb-2" for="flexCheckDefault">
+          ¿Eres entrenador? ¡Marca la casilla!
+        </label>
+      </div>
       <div id="alerta">
         <div class="alert alert-danger" role="alert">
           Correo y/o contraseña incorrectos
         </div>
       </div>
+      
       <button class="btn btn-lg btn-primary btn-block mb-3" type="button"  id="signin">Iniciar Sesión</button>
       <p class="text">¿No tienes una cuenta? <a href="/HTML/Ventanas/Registro.html" class="text-decoration-none" id=registrate>Registrate aqui</a> </p>
       <p class="text" style=" position: relative; left:95px;">&copy; 2017-2020</p>
     </form> 
 
 <!-- Localizacion de todos los scripts -->
-<script src="/HTML/assets/dist/js/sha.js"></script>
 <script src="/HTML/assets/dist/js/login.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </form>

@@ -1,17 +1,30 @@
 var sesionCookie = getCookie("Sesion")
+var tipoUsuario = getCookie("tipoUsuario")
 var botonCerrarSesion = document.createElement("a");
 botonCerrarSesion.class = "py-2";
 botonCerrarSesion.href = "#";
 botonCerrarSesion.id = "cerrarSesion";
 botonCerrarSesion.style = "position:relative; top: 8px;"
-if(sesionCookie != "") {
-    botonCerrarSesion.innerHTML = "Cerrar sesion";
-    document.getElementById("seccionTop").appendChild(botonCerrarSesion);
-    document.getElementById("botonLogIn").innerHTML = sesionCookie;
-    document.getElementById("botonLogIn").href = "/HTML/Ventanas/Cliente.html";
-    document.getElementById("botonRegistrate").innerHTML = "¡Visita tu perfil!";
-    document.getElementById("botonRegistrate").href = "#";
+if(tipoUsuario == "Cliente") {
+    if(sesionCookie != "") {
+        botonCerrarSesion.innerHTML = "Cerrar sesion";
+        document.getElementById("seccionTop").appendChild(botonCerrarSesion);
+        document.getElementById("botonLogIn").innerHTML = sesionCookie;
+        document.getElementById("botonLogIn").href = "/HTML/Ventanas/Cliente.html";
+        document.getElementById("botonRegistrate").innerHTML = "¡Visita tu perfil!";
+        document.getElementById("botonRegistrate").href = "/HTML/Ventanas/Cliente.html";
+    }
+} else {
+    if(sesionCookie != "") {
+        botonCerrarSesion.innerHTML = "Cerrar sesion";
+        document.getElementById("seccionTop").appendChild(botonCerrarSesion);
+        document.getElementById("botonLogIn").innerHTML = sesionCookie;
+        document.getElementById("botonLogIn").href = "/HTML/Ventanas/Entrenador.html";
+        document.getElementById("botonRegistrate").innerHTML = "¡Visita tu perfil!";
+        document.getElementById("botonRegistrate").href = "/HTML/Ventanas/Entrenador.html";
+    }
 }
+
 
 
 botonCerrarSesion.addEventListener('click', function () {

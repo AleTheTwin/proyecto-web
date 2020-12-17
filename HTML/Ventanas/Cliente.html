@@ -41,13 +41,13 @@
                 <div class="container2">
                     
                     <div class="cards" style="position: relative; left: 100px;">
-                <h1 class="title_Cards" >$100 <small class="text-muted">/ mo</small></h1>
-                <ul class="list-unstyled mt-3 mb-4" style="margin-top: 20px;" >
-                    <li>10 users included</li>
-                    <li>2 GB of storage</li>
-                    <li>Email support</li>
-                    <li>Help center access</li>
-                  </ul>
+                      <h2 class="text-muted" id="idMembresia" >id</h2>
+                    <h1 class="title_Cards" >$
+                      <small id="precioMembresia">0</small>
+                      <small class="text-muted">/ mo</small></h1>
+                    <ul class="list-unstyled mt-3 mb-4" style="margin-top: 20px;" >
+                        <li id="descripcionMembresia"></li>
+                      </ul>
              </div>
                 </div>
             </div>
@@ -160,7 +160,7 @@
         <div class="sidebar__menu">
           <div class="sidebar__link active_menu_link">
             <i class="fa fa-home"></i>
-            <a href="#">Dashboard</a>
+            <a href="/HTML/Ventanas/Index.html">HOME</a>
           </div>
           <h2></h2>
           <div class="sidebar__link">
@@ -177,7 +177,7 @@
           </div>
           <div class="sidebar__logout">
             <i class="fa fa-window-close"></i>
-            <a href="#">Cerrar Sesión</a>
+            <a href="/HTML/Ventanas/Index.html" onclick="deleteCookie('Sesion')">Cerrar Sesión</a>
           </div>
           
         </div>
