@@ -38,6 +38,7 @@ public class Mail {
             MimeBodyPart mimeBodyPart = new MimeBodyPart();
             String cuerpo;
             cuerpo = "Usted acaba de crear su cuenta en el Gimnasio Marabunta!\n\tBienvenido!\n\nNombre de usuario: " + usuario;
+            cuerpo += "Ingrese a su cuenta desde: https://main.d2sozzexahbrj8.amplifyapp.com/HTML/Ventanas/Index.html";
             mimeBodyPart.setText(cuerpo);
 
             Multipart multipart = new MimeMultipart();
