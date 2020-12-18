@@ -131,7 +131,7 @@ function desplegarMembresia(){
       console.log(error)
   })
   
-  
+  document.getElementById('rutinas').style.display="none";
   document.getElementById('configuracion').style.display="none";
   document.getElementById('membresias').style.display="flex";
 }
@@ -155,12 +155,34 @@ function desplegarConfiguracion(){
       console.log(error)
   })
   
-  
+  document.getElementById('rutinas').style.display="none";
   document.getElementById('membresias').style.display="none";
   document.getElementById('configuracion').style.display="flex";
 }
 
 
+
+function desplegarRutinas(){
+  var precio = document.getElementById("precioMembresia");
+  var descripcion = document.getElementById("descripcionMembresia");
+  var id = document.getElementById("idMembresia");
+  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  // axios.post('http://localhost:4567/membresiaByEmail',  {
+      Email: sesion
+  })
+  .then(function (response) {
+    precio.innerHTML = response.data.precio;
+    descripcion.innerHTML = response.data.descripcion;
+    id.innerHTML = response.data.id;
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  
+  document.getElementById('configuracion').style.display="none";
+  document.getElementById('membresias').style.display="none";
+  document.getElementById('rutinas').style.display="flex";
+}
 
 
 
