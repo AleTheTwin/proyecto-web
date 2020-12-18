@@ -33,7 +33,7 @@
 body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
-  background-image: ;
+ 
 }
 
 .text-primary-p {
@@ -104,6 +104,7 @@ main {
   grid-area: main;
   overflow-y: auto;
   overflow-x: auto;
+  
 }
 
 .main__container {
@@ -125,8 +126,11 @@ main {
   font-size: 24px;
   color: #2e4a66;
   margin-bottom: 5px;
+  
 }
-
+.configuracion{
+   background-image: url(/HTML/assets/dist/img/0031_p_hard-core-gym-logo_18.png);
+}
 .main__greeting > p {
   font-size: 14px;
   font-weight: 700;
@@ -288,21 +292,24 @@ color: #29a8f79c;
 }
 
 .camposEdit{
-  margin-bottom: 10px;
-  padding: 5px;
-  border: 3px;
+  margin-bottom: 5px;
+  border: 1px;
   border-radius: 12px;
   background-color: #2e4a66;
+  
+  color: rgb(255, 255, 255);
+}
+
+.textBox   {
+  align-items: center;
+  position: relative;
+  display: block;
+  top: 10px;
+  left: 130px;
   transition: 0.3s;
 }
-.camposEdit:hover{
+.textBox:hover{
   opacity: 0.5;
-}
-.textBox   {
-  position: relative;
-  top: 10px;
-  left: 20px;
-
 }
 .texto{
   font-family: 'Lato', sans-serif; 
@@ -311,12 +318,31 @@ color: #29a8f79c;
 }
 .camposEdit > i  {
   margin-bottom: 20px;
-  padding: 20px;
+  padding: 22px;
+  position: relative;
+  left: 420px;
 
 }
 
 .inputs{
   height: 25px;
-width: 500px;
+width: 300px;
+position: relative;
+top: 34px;
+
+}
+.texto2{
+  color: #020509b4;
+  position: relative;
+  left: 170px;
 }
 
+.Button{
+  background-color: #000000b4;
+    color: #fff;
+    position: relative;
+    border-radius: 5px;
+    padding: 10px 6px;
+    transition: 0.3s;
+    border-color: #000000b4;
+}
