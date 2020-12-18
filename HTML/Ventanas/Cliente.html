@@ -44,7 +44,7 @@
                       <h2 class="text-muted" id="idMembresia" >id</h2>
                     <h1 class="title_Cards" >$
                       <small id="precioMembresia">0</small>
-                      <small class="text-muted">/ mo</small></h1>
+                      <small class="text-muted">/ mes</small></h1>
                     <ul class="list-unstyled mt-3 mb-4" style="margin-top: 20px;" >
                         <li id="descripcionMembresia"></li>
                       </ul>
@@ -60,7 +60,7 @@
       <i class="fa fa-user-circle" aria-hidden="true"></i>
       <h1 class="texto">Nombre</h1>
       <div class="textBox">
-        <input  class="inputs" type="text">
+        <input  class="inputs" type="text" id="nombreConfig">
       </div>
 
     </div>
@@ -69,7 +69,7 @@
       <i class="fa fa-address-card" aria-hidden="true"></i>
       <h1 class="texto">Correo</h1>
       <div class="textBox">
-        <input class="inputs" type="text">
+        <input class="inputs" type="text" id ="emailConfig">
       </div>
     </div>
 
@@ -77,7 +77,7 @@
       <i class="fa fa-lock" aria-hidden="true"></i>
       <h1 class="texto">Contraseña Nueva</h1>
       <div class="textBox">
-        <input class="inputs" type="text">
+        <input class="inputs" type="password" id="passwordConfig">
       </div>
     </div>
 
@@ -85,7 +85,7 @@
       <i class="fa fa-lock" aria-hidden="true"></i>
       <h1 class="texto">Confirmar Contraseña</h1>
       <div class="textBox">
-        <input class="inputs" type="text">
+        <input class="inputs" type="password" id="passwordConfirmConfig">
       </div>
     </div>
     
@@ -93,8 +93,7 @@
       <i class="fa fa-calendar" aria-hidden="true"></i>
       <h1 class="texto">Edad</h1>
       <div class="textBox">
-        <input class="inputs" id="inputEdadCLI" type="number" min="0" max="80" oninput="validity.valid||(value='');" 
-        onpress="isNumber(event)" ,onpress="less80(event)">
+        <input id="edadConfig" class="inputs" id="inputEdadCLI" type="number" min="0" max="80" oninput="validity.valid||(value='');" onpress="isNumber(event)" ,onpress="less80(event)" >
       </div>
     </div>
 
@@ -102,7 +101,7 @@
       <i class="fa fa-transgender" aria-hidden="true"></i>
       <h1 class="texto">Sexo</h1>
       <div class="textBox"> 
-        <select id="sexBox" required="required">
+        <select id="sexBox" required="required" id="sexoConfig">
           <option value="Empty" > Selecciona el sexo</option>
           <option value="Hombre"> Hombre</option>
           <option value="Mujer">Mujer</option>
@@ -114,7 +113,7 @@
       <i class="fa fa-users" aria-hidden="true"></i>
       <h1 class="texto">Tipo de cliente</h1>
       <div class="textBox">
-        <input type="text">
+        <input type="text" id="tipoConfig">
       </div>
     </div>
 
@@ -133,15 +132,7 @@
             <div class="main__greeting" id="greeting" style="display: none;">
               <p>Bienvenido a tu Dashboard</p>
             </div>
-
-          </div>
-
-
-
-
-
-
-          
+          </div>    
         </div>
       </main>
 

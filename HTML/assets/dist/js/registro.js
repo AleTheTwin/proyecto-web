@@ -35,6 +35,7 @@ bRegistro.addEventListener('click', function () {
                                     alertaContenido.innerHTML = "El correo ya existe"
                                     alerta.style.display = 'inline';
                                     setCookie("Sesion", "", 0)
+                                    setCookie("tipoUsuario", "Cliente");
                                 }
                                 
                             })
