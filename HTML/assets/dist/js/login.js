@@ -30,7 +30,8 @@ bLogeo.addEventListener('click', function () {
     //     console.log(error)
     // })
     if(checkbox.checked) {
-        axios.post('https://gimnasio-sw.herokuapp.com/loginEntrenador',  {
+        axios.post('http://localhost:4567/loginEntrenador',  {
+            // axios.post('https://gimnasio-sw.herokuapp.com/loginEntrenador',  {
             Email: document.getElementById('inputEmail').value,
             Password: encodedPassword
         })
@@ -52,7 +53,8 @@ bLogeo.addEventListener('click', function () {
             console.log(error)
         })
     } else {
-        axios.post('https://gimnasio-sw.herokuapp.com/login',  {
+        axios.post('http://localhost:4567/login',  {
+        // axios.post('https://gimnasio-sw.herokuapp.com/login',  {
             Email: document.getElementById('inputEmail').value,
             Password: encodedPassword
         })

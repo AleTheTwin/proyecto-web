@@ -11,6 +11,7 @@ var sexoConfig = document.getElementById("sexoConfig");
 var tipoConfig = document.getElementById("tipoConfig");
 
 axios.post('http://localhost:4567/getDatos',  {
+// axios.post('https://gimnasio-sw.herokuapp.com/getDatos',  {
       Email: sesion
 })
 .then(function (response) {
@@ -44,7 +45,8 @@ function desplegarMembresia(){
   var precio = document.getElementById("precioMembresia");
   var descripcion = document.getElementById("descripcionMembresia");
   var id = document.getElementById("idMembresia");
-  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  // axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  axios.post('http://localhost:4567/membresiaByEmail',  {
       Email: sesion
   })
   .then(function (response) {
@@ -67,7 +69,8 @@ function desplegarConfiguracion(){
   var precio = document.getElementById("precioMembresia");
   var descripcion = document.getElementById("descripcionMembresia");
   var id = document.getElementById("idMembresia");
-  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  // axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  axios.post('http://localhost:4567/membresiaByEmail',  {
       Email: sesion
   })
   .then(function (response) {
