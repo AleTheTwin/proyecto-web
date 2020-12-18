@@ -107,3 +107,18 @@
 }
 
 .overflow-hidden { overflow: hidden; }
+
+
+.container2{
+  margin-top: 1px;
+  display: inline-flex;
+  justify-content: space-between;
+  position: relative;
+  padding-left: 120px;
+}
+.cards{
+  border: 1px;
+  background-color: #b9b6b675;
+ border-radius: 12px;
+ padding: 10px 10px;
+}
