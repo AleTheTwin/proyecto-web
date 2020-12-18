@@ -5,4 +5,6 @@ Jeffrey Romero Del Val
 Epic
 seguimos trabajando 
 
+Alejandro de Jesús Sánchez Morales, vamos a tarbajar para sacar este proyecto a flote.
+
 a través de esta plataforma, para el desarrollo de nuestro proyecto. 😎
