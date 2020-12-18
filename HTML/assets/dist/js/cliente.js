@@ -50,8 +50,8 @@ actualizar.addEventListener('click', function () {
           contraseñaConfig.value = window.btoa(contraseñaConfig.value);
         }
         alerta.style.display = 'none'
-        axios.post('http://localhost:4567/actualizarCliente',  {
-        // axios.post('https://gimnasio-sw.herokuapp.com/actualizarCliente',  {
+        // axios.post('http://localhost:4567/actualizarCliente',  {
+        axios.post('https://gimnasio-sw.herokuapp.com/actualizarCliente',  {
               Email: sesion,
               Correo: emailConfig.value,
               Password: contraseñaConfig.value,
