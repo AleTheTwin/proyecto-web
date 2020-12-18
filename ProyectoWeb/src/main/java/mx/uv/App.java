@@ -127,6 +127,7 @@ public final class App {
             } else {
                 Mail.enviarEmail(nombre, email);
                 clienteDAO.create(cliente);
+                clienteDAO.setMembresia(email, "Free");
             }
             return email;
 
