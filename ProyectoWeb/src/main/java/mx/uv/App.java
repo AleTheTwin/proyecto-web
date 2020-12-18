@@ -215,11 +215,14 @@ public final class App {
             Map<String, Membresia> membresiasMap = new HashMap<>();
             MembresiaDAO membresiaDAO = new MembresiaDAO();
             ArrayList<Object> lista = membresiaDAO.readAll();
+            int i = 0;
             for(Object o : lista) {
-                membresiasMap.put(((Membresia)o).getId(), (Membresia)o);
+                membresiasMap.put(Integer.toString(i), (Membresia)o);
+                i++;
             }
+            Map<String, Object> model = new HashMap<>();
             
-            return gson.toJson(membresiasMap.values());
+            return gson.toJson(membresiasMap);
         });
 
         post("/membresiaByEmail", (request, response) -> {
