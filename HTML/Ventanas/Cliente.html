@@ -27,7 +27,7 @@
 
               <div class="main__title">
                 <div class="main__greeting">
-                  <h1 id="nombreCliente">Hola </h1>
+                  <h1 id="nombreCliente">Hola</h1>
                 </div>
             </nav>
             <!-- Fin del nav_bar -->
@@ -39,14 +39,14 @@
         <div id="membresias"  style="display: none;">
                     <h1 style= "position: relative; left: 370px;">Esta es su membresia</h1>
                 <div class="container2">
-                    
                     <div class="cards" style="position: relative; left: 100px;">
-                      <h2 class="text-muted" id="idMembresia" >id</h2>
-                    <h1 class="title_Cards" >$
+                      <h2 style="position: relative; left: 60px; " class="text-muted" id="idMembresia" >id</h2>
+                    <h1 style="position: relative; left: 20px; " class="title_Cards" >$
                       <small id="precioMembresia">0</small>
                       <small class="text-muted">/ mo</small></h1>
                     <ul class="list-unstyled mt-3 mb-4" style="margin-top: 20px;" >
                         <li id="descripcionMembresia"></li>
+                        <button class="Button" >Cambiar Membresia</button>
                       </ul>
              </div>
                 </div>
@@ -54,55 +54,61 @@
           
     <!-- Seccion de membresias termina aqui -->
 <div id="configuracion" style="display:none;">
-  <div id="container2" >
+  <div id="container2" style= " position: relative; left: 250px;" >
+    <h1 class="texto2" >Bienvenido a tu perfil</h1>
 
-    <div class="camposEdit" style="display: flex;">
+    <div class="camposEdit" style="display: flex; ">
       <i class="fa fa-user-circle" aria-hidden="true"></i>
-      <h1 class="texto">Nombre</h1>
+      <h1 class="texto" style=" position: relative; left: 190px;">Nombre</h1>
+      
       <div class="textBox">
-        <input  class="inputs" type="text">
+        <input  class="inputs" type="text" style="right: 140px;">
       </div>
 
     </div>
 
+
+    <div>
+      
+    </div>
     <div class="camposEdit" style="display: flex;"  >
       <i class="fa fa-address-card" aria-hidden="true"></i>
-      <h1 class="texto">Correo</h1>
+      <h1 style=" position: relative; left: 200px;" class="texto">Correo</h1>
       <div class="textBox">
-        <input class="inputs" type="text">
+        <input class="inputs" type="text" style="right: 123px;">
       </div>
     </div>
 
     <div class="camposEdit" style="display: flex;" >
       <i class="fa fa-lock" aria-hidden="true"></i>
-      <h1 class="texto">Contraseña Nueva</h1>
+      <h1 style=" position: relative; left: 120px;" class="texto">Contraseña Nueva</h1>
       <div class="textBox">
-        <input class="inputs" type="text">
+        <input class="inputs" type="password" style="position: relative; right: 270px;">
       </div>
     </div>
 
     <div class="camposEdit" style="display: flex;" >
-      <i class="fa fa-lock" aria-hidden="true"></i>
-      <h1 class="texto">Confirmar Contraseña</h1>
+      <i  style="position: relative; left: 450px;" class="fa fa-lock" aria-hidden="true"></i>
+      <h1 style=" position: relative; left: 110px; " class="texto">Confirmar Contraseña</h1>
       <div class="textBox">
-        <input class="inputs" type="text">
+        <input class="inputs" type="password" style="position: relative; right: 320px;">
       </div>
     </div>
     
     <div class="camposEdit" style="display: flex;" >
       <i class="fa fa-calendar" aria-hidden="true"></i>
-      <h1 class="texto">Edad</h1>
+      <h1 style="position: relative; left:230px ; " class="texto">Edad</h1>
       <div class="textBox">
         <input class="inputs" id="inputEdadCLI" type="number" min="0" max="80" oninput="validity.valid||(value='');" 
-        onpress="isNumber(event)" ,onpress="less80(event)">
+        onpress="isNumber(event)" ,onpress="less80(event)" style="right: 83px;">
       </div>
     </div>
 
     <div class="camposEdit" style="display: flex;" >
-      <i class="fa fa-transgender" aria-hidden="true"></i>
-      <h1 class="texto">Sexo</h1>
+      <i style="position: relative; left: 350px;"  class="fa fa-transgender" aria-hidden="true"></i>
+      <h1 style="position: relative; left:240px;" class="texto">Sexo</h1>
       <div class="textBox"> 
-        <select id="sexBox" required="required">
+        <select id="sexBox" style="position: relative; top: 30px; left: 10px;">
           <option value="Empty" > Selecciona el sexo</option>
           <option value="Hombre"> Hombre</option>
           <option value="Mujer">Mujer</option>
@@ -111,10 +117,15 @@
     </div>
 
     <div class="camposEdit" style="display: flex;" >
-      <i class="fa fa-users" aria-hidden="true"></i>
-      <h1 class="texto">Tipo de cliente</h1>
+      <i style="position: relative; right: 50px;" class="fa fa-users" aria-hidden="true"></i>
+      <h1 style="position: relative; left: 160px; " class="texto">Tipo de cliente</h1>
       <div class="textBox">
-        <input type="text">
+        <select id="sexBox" style="position: relative; top: 30px; right:155px;" >
+          <option value="Empty" > Selecciona el tipo de Cliente</option>
+          <option value="Novato"> Novato</option>
+          <option value="Intermedio">Intermedio</option>
+          <option value="Avanzado">Avanzado</option>
+           </select>    	
       </div>
     </div>
 
@@ -136,12 +147,6 @@
 
           </div>
 
-
-
-
-
-
-          
         </div>
       </main>
 
