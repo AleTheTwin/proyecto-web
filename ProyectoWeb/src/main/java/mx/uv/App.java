@@ -56,7 +56,6 @@ public final class App {
 
             String email;
             String pass;
-            boolean isEntrenador;
             
             email = peticion.get("Email").getAsString();
             pass = peticion.get("Password").getAsString();
@@ -71,6 +70,8 @@ public final class App {
             return "0";
 
         });
+
+        
 
         post("/loginEntrenador", (request, response) -> {
             JsonParser parser = new JsonParser();
@@ -128,6 +129,54 @@ public final class App {
                 clienteDAO.create(cliente);
             }
             return email;
+
+        });
+
+        post("/actualizarCliente", (req, res) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(req.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String actualizar;
+            String email;
+            String correo;
+            String pass;
+            String nombre;
+            int edad;
+            boolean sexo;
+            String tipoCliente;
+            email = peticion.get("Email").getAsString();
+            correo = peticion.get("Correo").getAsString();
+            pass = peticion.get("Password").getAsString();
+            actualizar = peticion.get("SeActualiza").getAsString();
+            if(actualizar.equals("SI")) {
+                pass = Hash.getHash(pass);
+            }
+            nombre = peticion.get("Nombre").getAsString();
+            edad = Integer.parseInt(peticion.get("Edad").getAsString());
+            if(peticion.get("Sexo").getAsString().equals("2")) {
+                sexo = false;
+            } else {
+                sexo = true;
+            }
+            tipoCliente = peticion.get("Tipo").getAsString();
+
+            Cliente cliente = new Cliente(correo, pass, nombre, edad, sexo, tipoCliente);
+            ClienteDAO clienteDAO = new ClienteDAO();
+            
+            if(!correo.equals(email)) {
+                Cliente consulta = null;
+                consulta = (Cliente)clienteDAO.readByIdentifier(correo);
+                if(consulta==null) {
+                    clienteDAO.update(cliente, email);
+                } else {
+                    return "0";
+                }
+            } else {
+                clienteDAO.update(cliente, email);
+            }
+            
+            return "1";
 
         });
 

@@ -59,7 +59,7 @@ public class ClienteDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("UPDATE cliente SET correo = ?, password = ?, NombreC = ?, Edad = ?, Sexo = ?, tipcoCliente = ? where correo = ?");
+            stmt = conn.prepareStatement("UPDATE cliente SET correo = ?, password = ?, NombreC = ?, Edad = ?, Sexo = ?, tipoCliente = ? where correo = ?");
             stmt.setString(1, cliente.getCorreo());
             stmt.setString(2, cliente.getPassword());
             stmt.setString(3, cliente.getNombreC());
@@ -68,7 +68,6 @@ public class ClienteDAO implements DAO {
             stmt.setString(6, cliente.getTipoCliente());
             stmt.setString(7, identifier);
             stmt.execute();
-            System.out.println("Actualizado");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
