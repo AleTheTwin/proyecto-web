@@ -124,7 +124,7 @@ public final class App {
             if(clienteP != null) {
                 return "0";
             } else {
-                //Mail.enviarEmail(nombre, email);
+                Mail.enviarEmail(nombre, email);
                 clienteDAO.create(cliente);
             }
             return email;
@@ -186,19 +186,20 @@ public final class App {
             model.put("Membresia", membresia);
             
             
-            return "" + gson.toJson(membresia);
+            return gson.toJson(membresia);
         });
 
-        post("/getNombreSesion", (request, response) -> {
+        post("/getDatos", (request, response) -> {
             JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
+            Gson gson = new Gson();
 
             String email = peticion.get("Email").getAsString();
             ClienteDAO clienteDAO = new ClienteDAO();
             Cliente cliente = (Cliente)clienteDAO.readByIdentifier(email);
                         
-            return cliente.getNombreC();
+            return gson.toJson(cliente);
         });
         
         get("/rutinas", (request, response) -> {

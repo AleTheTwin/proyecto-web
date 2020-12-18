@@ -2,13 +2,23 @@
 var sesion = getCookie("Sesion")
 var nombreCliente = document.getElementById("nombreCliente")
 var nombreCliente2 = document.getElementById("nombreCliente2")
+var nombreConfig = document.getElementById("nombreConfig");
+var emailConfig = document.getElementById("emailConfig");
+var contraseñaConfig = document.getElementById("passwordConfig");
+var contraseñaConfirmConfig = document.getElementById("passwordConfirmConfig");
+var edadConfig = document.getElementById("edadConfig");
+var sexoConfig = document.getElementById("sexoConfig");
+var tipoConfig = document.getElementById("tipoConfig");
 
-axios.post('https://gimnasio-sw.herokuapp.com/getNombreSesion',  {
+axios.post('http://localhost:4567/getDatos',  {
       Email: sesion
 })
 .then(function (response) {
-    nombreCliente.innerHTML = "Hola  " + response.data;
-    nombreCliente2.innerHTML = response.data;
+    nombreCliente.innerHTML = "Hola  " + response.data.nombreC;
+    nombreCliente2.innerHTML = response.data.nombreC;
+    nombreConfig.value = response.data.nombreC;
+    emailConfig.value = response.data.correo;
+    edadConfig.value = response.data.edad;
 })
 .catch(function (error) {
     console.log(error)

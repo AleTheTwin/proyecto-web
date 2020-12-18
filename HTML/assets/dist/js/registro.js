@@ -30,6 +30,7 @@ bRegistro.addEventListener('click', function () {
                                 console.log(response.data);
                                 if(response.data==email){
                                     setCookie("Sesion", response.data, 0)
+                                    setCookie("tipoUsuario", "Cliente");
                                     location.href = "/HTML/Ventanas/Index.html";
                                 } else {
                                     alertaContenido.innerHTML = "El correo ya existe"
