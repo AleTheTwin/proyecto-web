@@ -217,7 +217,7 @@ public final class App {
             ArrayList<Object> lista = membresiaDAO.readAll();
             int i = 0;
             for(Object o : lista) {
-                membresiasMap.put(Integer.toString(i), (Membresia)o);
+                membresiasMap.put(("id" + Integer.toString(i)), (Membresia)o);
                 i++;
             }
             Map<String, Object> model = new HashMap<>();
