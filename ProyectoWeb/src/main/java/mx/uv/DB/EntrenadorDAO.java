@@ -66,7 +66,9 @@ public class EntrenadorDAO implements DAO {
             stmt.setString(4, entrenador.getTipoE());
             stmt.setString(5, identifier);
             stmt.execute();
+            System.out.println("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES");
         } catch (Exception e) {
+            System.out.println("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             e.printStackTrace();
         } finally {
             try { conn.close(); } catch(Exception ex) {}
@@ -78,7 +80,6 @@ public class EntrenadorDAO implements DAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         Entrenador entrenador = (Entrenador)objeto;
-        System.out.println((Entrenador)objeto);
         try {
             conn = new ConexionDB().getConexion();
             System.out.println("conexion establecida");

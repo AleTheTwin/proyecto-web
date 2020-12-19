@@ -181,6 +181,46 @@ public final class App {
 
         });
 
+        post("/actualizarEntrenador", (req, res) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(req.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String actualizar;
+            String email;
+            String correo;
+            String pass;
+            String nombre;
+            String tipoE;
+            email = peticion.get("Email").getAsString();
+            correo = peticion.get("Correo ").getAsString();
+            pass = peticion.get("Password").getAsString();
+            actualizar = peticion.get("SeActualiza").getAsString();
+            if(actualizar.equals("SI")) {
+                pass = Hash.getHash(pass);
+            }
+            nombre = peticion.get("Nombre").getAsString();
+            tipoE = peticion.get("Tipo").getAsString();
+
+            Entrenador entrenador = new Entrenador(correo, pass, nombre, tipoE);
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            
+            if(!correo.equals(email)) {
+                Entrenador consulta = null;
+                consulta = (Entrenador)entrenadorDAO.readByIdentifier(correo);
+                if(consulta==null) {
+                    entrenadorDAO.update(entrenador, email);
+                } else {
+                    return "0";
+                }
+            } else {
+                entrenadorDAO.update(entrenador, email);
+            }
+            
+            return "1";
+
+        });
+
         post("/registroEntrenador", (req, res) -> {
             JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(req.body());
@@ -254,6 +294,19 @@ public final class App {
                         
             return gson.toJson(cliente);
         });
+
+        post("/getDatosEntrenador", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+            Gson gson = new Gson();
+
+            String email = peticion.get("Email").getAsString();
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            Entrenador entrenador = (Entrenador)entrenadorDAO.readByIdentifier(email);
+                        
+            return gson.toJson(entrenador);
+        });
         
         post("/rutinas", (request, response) -> {
             JsonParser parser = new JsonParser();
@@ -272,7 +325,27 @@ public final class App {
 
             model.put("rutinas", rutinas);
             model.put("email", email);
-            return new ModelAndView(model, "hello.ftl"); // located in src/test/resources/spark/template/freemarker
+            return new ModelAndView(model, "rutinasCliente.ftl"); // located in src/test/resources/spark/template/freemarker
+        }, new FreeMarkerEngine());
+
+        post("/rutinasEntrenador", (request, response) -> {
+            JsonParser parser = new JsonParser();
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String email = peticion.get("Email").getAsString();
+            Map<String, Object> model = new HashMap<>();
+            List<Rutina> rutinas = new ArrayList<Rutina>();
+            RutinaDAO rutinaDAO = new RutinaDAO();
+            ArrayList<Object> objects = rutinaDAO.readByEntrenador(email);
+
+            for (Object o : objects ) {
+                rutinas.add((Rutina)o);
+            }
+
+            model.put("rutinas", rutinas);
+            model.put("email", email);
+            return new ModelAndView(model, "rutinasEntrenador.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
     }
 

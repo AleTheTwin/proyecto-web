@@ -1,4 +1,3 @@
-//
 var alerta = document.getElementById("alerta")
 alerta.style.display = 'none';
 var actualizar = document.getElementById('actualizar');
@@ -9,15 +8,13 @@ var nombreConfig = document.getElementById("nombreConfig")
 var emailConfig = document.getElementById("emailConfig");
 var contraseñaConfig = document.getElementById("passwordConfig");
 var contraseñaConfirmConfig = document.getElementById("passwordConfirmConfig");
-var edadConfig = document.getElementById("edadConfig");
-var sexoConfig = document.getElementById("sexoConfig");
 var tipoConfig = document.getElementById("tipoConfig");
 var password;
 
 var rutinas = document.getElementById("rutinas")
 
 // axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-axios.post('http://localhost:4567/rutinas',  {
+axios.post('http://localhost:4567/rutinasEntrenador',  {
     Email: sesion
 })
 .then(function (response) {
@@ -28,16 +25,15 @@ axios.post('http://localhost:4567/rutinas',  {
     console.log(error)
 })
 
-// axios.post('http://localhost:4567/getDatos',  {
-axios.post('https://gimnasio-sw.herokuapp.com/getDatos',  {
+axios.post('http://localhost:4567/getDatosEntrenador',  {
+// axios.post('https://gimnasio-sw.herokuapp.com/getDatosEntrenador',  {
       Email: sesion
 })
 .then(function (response) {
-    nombreCliente.innerHTML = "Hola  " + response.data.nombreC;
-    nombreCliente2.innerHTML = response.data.nombreC;
-    nombreConfig.value = response.data.nombreC;
+    nombreCliente.innerHTML = "Hola  " + response.data.nombreE;
+    nombreCliente2.innerHTML = response.data.nombreE;
+    nombreConfig.value = response.data.nombreE;
     emailConfig.value = response.data.correo;
-    edadConfig.value = response.data.edad;
     password = response.data.password;
 })
 .catch(function (error) {
@@ -62,14 +58,12 @@ actualizar.addEventListener('click', function () {
           contraseñaConfig.value = window.btoa(contraseñaConfig.value);
         }
         alerta.style.display = 'none'
-        // axios.post('http://localhost:4567/actualizarCliente',  {
-        axios.post('https://gimnasio-sw.herokuapp.com/actualizarCliente',  {
+        axios.post('http://localhost:4567/actualizarEntrenador',  {
+        // axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
               Email: sesion,
               Correo: emailConfig.value,
               Password: contraseñaConfig.value,
               Nombre: nombreConfig.value,
-              Edad: edadConfig.value,
-              Sexo: sexoConfig.value,
               Tipo: tipoConfig.value,
               SeActualiza: actualizaPass
         })
@@ -82,7 +76,7 @@ actualizar.addEventListener('click', function () {
               alerta.class = "alert alert-success";
               alerta.innerHTML = "Actualización correcta";
               alerta.style.display = 'inline';
-              location.href="/HTML/Ventanas/Cliente.html";
+              location.href="/HTML/Ventanas/Entrenador.html";
             }
         })
         .catch(function (error) {
