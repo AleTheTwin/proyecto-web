@@ -16,8 +16,8 @@ var password;
 
 var rutinas = document.getElementById("rutinas")
 
-// axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-axios.post('http://localhost:4567/rutinas',  {
+axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+// axios.post('http://localhost:4567/rutinas',  {
     Email: sesion
 })
 .then(function (response) {

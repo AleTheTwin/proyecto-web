@@ -13,8 +13,8 @@ var password;
 
 var rutinas = document.getElementById("rutinas")
 
-// axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-axios.post('http://localhost:4567/rutinasEntrenador',  {
+axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+// axios.post('http://localhost:4567/rutinasEntrenador',  {
     Email: sesion
 })
 .then(function (response) {
@@ -25,8 +25,8 @@ axios.post('http://localhost:4567/rutinasEntrenador',  {
     console.log(error)
 })
 
-axios.post('http://localhost:4567/getDatosEntrenador',  {
-// axios.post('https://gimnasio-sw.herokuapp.com/getDatosEntrenador',  {
+// axios.post('http://localhost:4567/getDatosEntrenador',  {
+axios.post('https://gimnasio-sw.herokuapp.com/getDatosEntrenador',  {
       Email: sesion
 })
 .then(function (response) {
@@ -58,8 +58,8 @@ actualizar.addEventListener('click', function () {
           contraseñaConfig.value = window.btoa(contraseñaConfig.value);
         }
         alerta.style.display = 'none'
-        axios.post('http://localhost:4567/actualizarEntrenador',  {
-        // axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
+        // axios.post('http://localhost:4567/actualizarEntrenador',  {
+        axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
               Email: sesion,
               Correo: emailConfig.value,
               Password: contraseñaConfig.value,
