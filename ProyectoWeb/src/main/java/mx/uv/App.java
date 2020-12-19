@@ -255,17 +255,17 @@ public final class App {
             return gson.toJson(cliente);
         });
         
-        get("/rutinas", (request, response) -> {
+        post("/rutinas", (request, response) -> {
             JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
-            
+
+            String email = peticion.get("Email").getAsString();
             Map<String, Object> model = new HashMap<>();
             List<Rutina> rutinas = new ArrayList<Rutina>();
             RutinaDAO rutinaDAO = new RutinaDAO();
-            ArrayList<Object> objects = rutinaDAO.readAll();
+            ArrayList<Object> objects = rutinaDAO.readByCliente(email);
 
-            String email = peticion.get("Email").getAsString();
             for (Object o : objects ) {
                 rutinas.add((Rutina)o);
             }

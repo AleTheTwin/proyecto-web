@@ -29,6 +29,28 @@ public class RutinaDAO implements DAO {
         return rutinas;
     }
 
+    public ArrayList<Object> readByCliente(String identifier) {
+        ArrayList<Object> rutinas = new ArrayList<Object>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("SELECT * FROM clienterutina where correo = ?");
+            stmt.setString(1, identifier);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                rutinas.add(new Rutina(rs.getString("id_r"), rs.getString("descripcion")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+        
+        return rutinas;
+
+    }
+
     @Override
     public Object readByIdentifier(String identifier) {
         Connection conn = null;
@@ -50,6 +72,7 @@ public class RutinaDAO implements DAO {
         return rutina;
 
     }
+
 
     @Override
     public void update(Object objeto, String identifier) {

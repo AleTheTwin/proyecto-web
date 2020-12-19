@@ -17,185 +17,117 @@
     <title>Pagina Cliente</title>
   </head>
   <body id="body">
-     
-        <div class="container">
-            
+    <div class="container">
+      <!-- INICIO DE NAV_BAR -->
+      <nav class="navbar navbar-expand-sm" >
+        <div class="nav_icon" onclick="toggleSidebar()">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
 
-            <!-- INICIO DE NAV_BAR -->
-            <nav class="navbar navbar-expand-sm" >
-              <div class="nav_icon" onclick="toggleSidebar()">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-              </div>
-
-              <div class="main__title">
-                <div class="main__greeting">
-                  <h1 id="nombreCliente">Hola</h1>
-                </div>
-            </nav>
+        <div class="main__title">
+          <div class="main__greeting">
+            <h1 id="nombreCliente">Hola</h1>
+          </div>
+        </div>
+      </nav>
             <!-- Fin del nav_bar -->
 
 <!-- Division de membresias empieza aqui -->
 
-      <main>
-          <!-- Seccion Membresias -->
-        <div id="membresias"  style="display: none;">
-                    <h1 style= "position: relative; left: 270px;">Esta es su membresia</h1>
-                <div style="position: relative; right: 160px;" class="container2">
-                    <div class="cards" style="position: relative; left: 100px;">
-                      <h2 style="text-align: center" class="text-muted" id="idMembresia" >id</h2>
-                    <h1 style="text-align: center " class="title_Cards" >$
-                      <small id="precioMembresia">0</small>
-                      <small class="text-muted">/ mes</small></h1>
-                    <ul class="list-unstyled mt-3 mb-5" style="margin-top: 20px; text-align: center" >
-                      <li id="descripcionMembresia"></li>
-                    </ul>
-                    <button class="Button" style="margin-top: 20px; text-align: center">Cambiar Membresia</button>
-             </div>
-                </div>
-            </div>
+    <main>
+        <!-- Division de Rutinas  -->
+    <div  id="rutinas" style="display: inline;" class="container-fluid">
+      <div class="container-fluid">
+        <h1 style= "text-align: center;">Estas son sus rutinas</h1>
+      </div> 
+      
+      <div  class="container2">
+        <div id="rutinas"></div>
+      </div> 
+    </div>
+<!-- Fin de division rutinas -->
+        <!-- Seccion Membresias -->
+      <div id="membresias"  style="display: none;">
+        <h1 style= "position: relative; left: 270px;">Esta es su membresia</h1>
+        <div style="position: relative; right: 160px;" class="container2">
+          <div class="cards" style="position: relative; left: 100px;">
+            <h2 style="text-align: center" class="text-muted" id="idMembresia" >id</h2>
+            <h1 style="text-align: center " class="title_Cards" >$
+              <small id="precioMembresia">0</small>
+              <small class="text-muted">/ mes</small>
+            </h1>
+            <ul class="list-unstyled mt-3 mb-5" style="margin-top: 20px; text-align: center" >
+              <li id="descripcionMembresia"></li>
+            </ul>
+              <button class="Button" style="margin-top: 20px; text-align: center">Cambiar Membresia</button>
+          </div>
+        </div>
+      </div>
           
     <!-- Seccion de membresias termina aqui -->
-<div id="configuracion" style="display:none;">
-  <!-- <div id="container2" style= " position: relative; left: 250px;" >
-    <h1 class="texto2" >Bienvenido a tu perfil</h1>
-
-    <div class="camposEdit" style="display: flex; ">
-      <i class="fa fa-user-circle" aria-hidden="true"></i>
-      <h1 class="texto" style=" position: relative; left: 190px;">Nombre</h1>
-      <div class="textBox">
-        <input  class="inputs" type="text" style="right: 140px;" id = "nombreConfig">
-      </div>
-    </div>
-    <div>
-    </div>
-    <div class="camposEdit" style="display: flex;"  >
-      <i class="fa fa-address-card" aria-hidden="true"></i>
-      <h1 style=" position: relative; left: 200px;" class="texto">Correo</h1>
-      <div class="textBox">
-        <input class="inputs" type="text" style="right: 123px;" id="emailConfig">
-      </div>
-    </div>
-
-    <div class="camposEdit" style="display: flex;" >
-      <i class="fa fa-lock" aria-hidden="true"></i>
-      <h1 style=" position: relative; left: 120px;" class="texto">Contraseña Nueva</h1>
-      <div class="textBox">
-        <input class="inputs" type="password" style="position: relative; right: 270px;" id="passwordConfig">
-      </div>
-    </div>
-
-    <div class="camposEdit" style="display: flex;" >
-      <i  style="position: relative; left: 450px;" class="fa fa-lock" aria-hidden="true"></i>
-      <h1 style=" position: relative; left: 110px; " class="texto">Confirmar Contraseña</h1>
-      <div class="textBox">
-        <input class="inputs" type="password" style="position: relative; right: 320px;" id="passwordConfirmConfig">
-      </div>
-    </div>
-    
-    <div class="camposEdit" style="display: flex;" >
-      <i class="fa fa-calendar" aria-hidden="true"></i>
-      <h1 style="position: relative; left:230px ; " class="texto">Edad</h1>
-      <div class="textBox">
-        <input class="inputs" id="inputEdadCLI" type="number" min="0" max="80" oninput="validity.valid||(value='');" 
-        onpress="isNumber(event)" ,onpress="less80(event)" style="right: 83px;" id="edadConfig">
-      </div>
-    </div>
-
-    <div class="camposEdit" style="display: flex;" >
-      <i style="position: relative; left: 350px;"  class="fa fa-transgender" aria-hidden="true"></i>
-      <h1 style="position: relative; left:240px;" class="texto">Sexo</h1>
-      <div class="textBox"> 
-        <select id="sexBox" style="position: relative; top: 30px; left: 10px;" id="sexoConfig">
-          <option value="Empty" > Selecciona el sexo</option>
-          <option value="Hombre"> Hombre</option>
-          <option value="Mujer">Mujer</option>
-           </select>    	
-      </div>
-    </div>
-
-    <div class="camposEdit" style="display: flex;" >
-      <i style="position: relative; right: 50px;" class="fa fa-users" aria-hidden="true"></i>
-      <h1 style="position: relative; left: 160px; " class="texto">Tipo de cliente</h1>
-      <div class="textBox">
-        <select id="sexBox" style="position: relative; top: 30px; right:155px;" id="tipoConfig">
-          <option value="Empty" > Selecciona el tipo de Cliente</option>
-          <option value="Novato"> Novato</option>
-          <option value="Intermedio">Intermedio</option>
-          <option value="Avanzado">Avanzado</option>
-           </select>    	
-      </div>
-    </div>
-    <button class="btn btn-success">Actualizar</button>
-
-   </div> -->
-  
-  <div class="container-fluid">
-    <div class="main__title container-fluid" >
-      <h1>Modifica tu perfil </h1>
-    </div>
-
-    <div class="container-fluid">
-      <div class="alert alert-danger"  role="alert" id="alerta">
-        Correo y/o contraseña incorrectos
-      </div>
-    </div>
-    
-    <div class="container-fluid">
-      <div class="form-floating mb-3 container-fluid" >
-        <input type="text" class="form-control" id="nombreConfig">
-        <label for="floatingInput" style="left: 10px;" > Nombre de usuario</label>
-      </div>
-      <div class="form-floating mb-3 container-fluid">
-        <input type="email" class="form-control" placeholder="name@example.com" id="emailConfig">
-        <label for="floatingInput" style="left: 10px;" > Correo Electrónico</label>
-      </div>
-      <div class="container-fluid">
-        <p>Si no desea cambiar contraseña solo deje vacío</p>
-        <div class="row">
-          <div class="form-floating mb-3 col-lg">
-            <input type="password" class="form-control" placeholder="Password" id="passwordConfig">
-            <label for="floatingPassword" style="left: 10px;" > Contraseña</label>
+    <!-- Seccion de modificar Perfil -->
+      <div id="configuracion" style="display:none;">  
+        <div class="container-fluid">
+          <div class="main__title container-fluid">
+            <h1>Modifica tu perfil </h1>
           </div>
-          <div class="form-floating mb-3 col-lg">
-            <input type="password" class="form-control" placeholder="Password" id="passwordConfirmConfig">
-            <label for="floatingPassword" style="left: 10px;" > Confirmar contraseña</label>
+
+          <div class="container-fluid">
+            <div class="alert alert-danger"  role="alert" id="alerta">
+              Correo y/o contraseña incorrectos
+            </div>
+          </div>
+      
+          <div class="container-fluid">
+            <div class="form-floating mb-3 container-fluid" >
+              <input type="text" class="form-control" id="nombreConfig">
+              <label for="floatingInput" style="left: 10px;" > Nombre de usuario</label>
+            </div>
+            <div class="form-floating mb-3 container-fluid">
+              <input type="email" class="form-control" placeholder="name@example.com" id="emailConfig">
+              <label for="floatingInput" style="left: 10px;" > Correo Electrónico</label>
+            </div>
+            <div class="container-fluid">
+              <p>Si no desea cambiar contraseña solo deje vacío</p>
+              <div class="row">
+                <div class="form-floating mb-3 col-lg">
+                  <input type="password" class="form-control" placeholder="Password" id="passwordConfig">
+                  <label for="floatingPassword" style="left: 10px;" > Contraseña</label>
+                </div>
+                <div class="form-floating mb-3 col-lg">
+                  <input type="password" class="form-control" placeholder="Password" id="passwordConfirmConfig">
+                  <label for="floatingPassword" style="left: 10px;" > Confirmar contraseña</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-floating mb-3 col-lg">
+              <input  id="edadConfig"
+              type="number" min="0" max="80" oninput="validity.valid||(value='');" onpress="isNumber(event)" ,onpress="less80(event)" 
+              class="form-control" placeholder="Password">
+              <label for="floatingPassword" style="left: 10px;"> Edad</label>
+            </div>
+            <label  style="position: relative; left: 20px;"> Sexo</label>
+            <div class="form-floating mb-3 container-fluid">
+              <select class="form-select" aria-label="Default select example" id="sexoConfig">
+                <option value="1">Hombre</option>
+                <option value="2">Mujer</option>
+              </select>
+            </div>
+            <label  style="position: relative; left: 20px;"> Tipo de usuario</label>
+            <div class="form-floating mb-3 container-fluid">
+              <select class="form-select" aria-label="Default select example" id="tipoConfig">
+                <option value="noob">Novato</option>
+                <option value="mid">Intermedio</option>
+                <option value="pro">Experto</option>
+              </select>
+            </div>
+            <div class="container" style="position: relative; left: 20px;">
+              <button type="button" class="btn btn-success" id="actualizar" >Actualizar datos</button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="form-floating mb-3 col-lg">
-        <input  id="edadConfig"
-        type="number" min="0" max="80" oninput="validity.valid||(value='');" onpress="isNumber(event)" ,onpress="less80(event)" 
-        class="form-control" placeholder="Password">
-        <label for="floatingPassword" style="left: 10px;"> Edad</label>
-      </div>
-      <label  style="position: relative; left: 20px;"> Sexo</label>
-      <div class="form-floating mb-3 container-fluid">
-        <select class="form-select" aria-label="Default select example" id="sexoConfig">
-          <option value="1">Hombre</option>
-          <option value="2">Mujer</option>
-        </select>
-      </div>
-      <label  style="position: relative; left: 20px;"> Tipo de usuario</label>
-      <div class="form-floating mb-3 container-fluid">
-        <select class="form-select" aria-label="Default select example" id="tipoConfig">
-          <option value="noob">Novato</option>
-          <option value="mid">Intermedio</option>
-          <option value="pro">Experto</option>
-        </select>
-      </div>
-      <div class="container" style="position: relative; left: 20px;">
-        <button type="button" class="btn btn-success" id="actualizar" >Actualizar datos</button>
-      </div>
-    </div>
-    
-  </div>
-  <!-- Division de Rutinas  -->
-        <div  id="rutinas" style="display: none;">
+      
 
-
-
-        </div>
-<!-- Fin de division rutinas -->
 </div>
    
 
@@ -255,11 +187,11 @@
         </div>
       </div>
     </div>
-    <!-- JavaScript Bundle with Popper -->
+    <!-- JavaScript Bundle with Popper -->  
+    <script src="/HTML/assets/dist/js/cookies.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<!-- <script src="/HTML/assets/dist/js/axios.js"></script> -->
-<script src="/HTML/assets/dist/js/cliente.js"></script>
+    <script src="/HTML/assets/dist/js/cliente.js"></script>
   </body>
 </html>

@@ -14,7 +14,18 @@ var sexoConfig = document.getElementById("sexoConfig");
 var tipoConfig = document.getElementById("tipoConfig");
 var password;
 
+var rutinas = document.getElementById("rutinas")
 
+axios.post('http://localhost:4567/rutinas',  {
+    Email: sesion
+})
+.then(function (response) {
+    console.log(response.data)
+    rutinas.innerHTML = response.data;    
+})
+.catch(function (error) {
+    console.log(error)
+})
 
 // axios.post('http://localhost:4567/getDatos',  {
 axios.post('https://gimnasio-sw.herokuapp.com/getDatos',  {
@@ -193,37 +204,6 @@ function closeSidebar() {
     sidebar.classList.remove("sidebar_responsive");
     sidebarOpen = false;
   }
-}
-
-function deleteCookie(correo){
-  valor="";
-  expiracion="";
-  var d = new Date();
-  d.setTime(d.getTime()+expiracion*24*60*60*1000);
-  var expira = "expieres="+d.toUTCString();
-  document.cookie = correo+ "=" + valor +";" + expira +";path=/";
-}
-
-function setCookie(correo, valor, expiracion){
-  var d = new Date();
-  d.setTime(d.getTime()+expiracion*24*60*60*1000);
-  var expira = "expieres="+d.toUTCString();
-  document.cookie = correo+ "=" + valor +";" + expira +";path=/";
-}
-
-function getCookie(correo){
-  var nom= correo +"=";
-  var array = document.cookie.split(";");
-  for(var i=0; i<array.length; i++){
-      var c = array[i];
-      while (c.charAt(0)==" "){
-          c= c.substring(1);
-      }
-      if(c.indexOf(correo)==0){
-          return c.substring(correo.length + 1, c.length);
-      }
-  }
-  return  "";
 }
 
 
