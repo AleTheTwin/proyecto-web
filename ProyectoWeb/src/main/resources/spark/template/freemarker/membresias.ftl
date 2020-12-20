@@ -38,7 +38,7 @@
   <h1 style= "text-align: center;">aaa</h1>
   <div class="row">
   <#list membresias as membresia>
-    <div class="cards col-sm" style="display: flex;">
+    <div class="cards col-sm" style="display: flex; justify-content: space-around;  ">
       <h2 style="text-align: center" class="text-muted" >${membresia.id}</h2>
       <h1 style="text-align: center " class="title_Cards" >$
         <small>${membresia.descripcion}</small>
