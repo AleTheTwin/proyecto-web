@@ -96,6 +96,7 @@ public final class App {
 
         });
 
+
         post("/registro", (req, res) -> {
             JsonElement arbol = parser.parse(req.body());
             JsonObject peticion = arbol.getAsJsonObject();
@@ -367,6 +368,22 @@ public final class App {
             model.put("selected", membresia.getId());
             return new ModelAndView(model, "membresias.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
+
+        post("/updateMembresiaCliente", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String email;
+            String id;
+
+            email = peticion.get("Email").getAsString();
+            id = peticion.get("Id").getAsString();
+            ClienteDAO clienteDAO = new ClienteDAO();
+            clienteDAO.updateMembresia(email, id);
+            
+            return "Membresia Actualizada";
+
+        });
 
     }
 

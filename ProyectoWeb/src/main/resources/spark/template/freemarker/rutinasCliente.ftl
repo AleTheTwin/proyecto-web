@@ -17,7 +17,7 @@
     <div class="cards col-sm">
       <h2 style="text-align: center" class="text-muted">${rutina.id}</h2>
       <ul class="list-unstyled mt-3 mb-5" style="position: relative; text-align: center" >
-        <li id="descripcionMembresia">${rutina.descripcion}</li>
+        <li>${rutina.descripcion}</li>
       </ul>
     </div>
   </#list>
