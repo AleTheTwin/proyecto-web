@@ -29,17 +29,17 @@ axios.post('http://localhost:4567/membresiasFTL',  {
     console.log(error)
 })
 
-axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-// axios.post('http://localhost:4567/rutinas',  {
-    Email: sesion
-})
-.then(function (response) {
-    console.log(response.data)
-    rutinas.innerHTML = response.data;    
-})
-.catch(function (error) {
-    console.log(error)
-})
+// axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+// // axios.post('http://localhost:4567/rutinas',  {
+//     Email: sesion
+// })
+// .then(function (response) {
+//     console.log(response.data)
+//     rutinas.innerHTML = response.data;    
+// })
+// .catch(function (error) {
+//     console.log(error)
+// })
 
 // axios.post('http://localhost:4567/getDatos',  {
 axios.post('https://gimnasio-sw.herokuapp.com/getDatos',  {
@@ -188,17 +188,13 @@ function desplegarConfiguracion(){
 
 
 function desplegarRutinas(){
-  var precio = document.getElementById("precioMembresia");
-  var descripcion = document.getElementById("descripcionMembresia");
-  var id = document.getElementById("idMembresia");
-  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
-  // axios.post('http://localhost:4567/membresiaByEmail',  {
+  var id = document.getElementById("rutinas");
+  // axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+  axios.post('http://localhost:4567/rutinas',  {
       Email: sesion
   })
   .then(function (response) {
-    precio.innerHTML = response.data.precio;
-    descripcion.innerHTML = response.data.descripcion;
-    id.innerHTML = response.data.id;
+    id.innerHTML = response.data
   })
   .catch(function (error) {
       console.log(error)
@@ -206,7 +202,7 @@ function desplegarRutinas(){
   
   document.getElementById('configuracion').style.display="none";
   document.getElementById('membresias').style.display="none";
-  document.getElementById('rutinas').style.display="flex";
+  document.getElementById('rutinas').style.display="inline";
 }
 
 
@@ -240,4 +236,19 @@ function isNumber(e) {
     alert("La edad es mayor a 80")
     document.getElementById('inputEdadCLI').value=0;
   }
+}
+//funcion de selección de membresía
+
+function seleccionarMembresia(id) {
+  // axios.post('https://gimnasio-sw.herokuapp.com/updateMembresiaCliente',  {
+  axios.post('http://localhost:4567/updateMembresiaCliente',  {
+      Email: sesion,
+      Id: id
+  })
+  .then(function (response) {
+    location.href = "/HTML/Ventanas/Cliente.html"
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
 }

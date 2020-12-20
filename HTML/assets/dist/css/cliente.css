@@ -69,12 +69,21 @@ body {
 .container {
   display: grid;
   height: 100vh;
+  position: fixed;
+  width: 300%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
   grid-template-columns: 0.8fr 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 3fr;
   grid-template-areas:
     "sidebar nav nav nav"
     "sidebar main main main";
   /* grid-gap: 0.2rem; */
+
+
+  
 }
 
 .navbar {
@@ -108,7 +117,7 @@ main {
 }
 
 .main__container {
-  padding: 20px 10px;
+  padding: 20px 0px;
 }
 
 .main__title {
@@ -137,7 +146,12 @@ main {
   color: #a5aaad;
 }
 
-
+.Button{
+  width:100px; 
+  margin: -20px -50px; 
+  position:relative; 
+  left:50%;
+}
 
 /*  SIDEBAR STARTS HERE  */
 
@@ -250,7 +264,7 @@ main {
       "main";
   }
 
-  #sidebar {
+#sidebar {
     display: none;
   }
 
@@ -265,9 +279,11 @@ main {
 .container2{
     margin-top: 100px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+   
 }
 
+.outer { display: flex; justify-content: center; align-items: center; height: 400px}
 
 @media only screen and (max-width: 480px) {
   .navbar__left {

@@ -21,8 +21,10 @@
     <!-- Button trigger modal -->
 
     <!-- Modal -->
-    <div class="modal fade" id="membresiaSelect" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" style="width: 1000px;">
+   
+
+<div class="modal fade" id="membresiaSelect" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style=" display: flex; justify-content: center; align-items: center; height: 100%">
         <div class="modal-content" style="width: 1000px;">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Seleccione su membresía</h5>
@@ -38,7 +40,10 @@
         </div>
       </div>
     </div>
+    
+    <!-- fin de modal -->
     <div class="container">
+      
       <!-- INICIO DE NAV_BAR -->
       <nav class="navbar navbar-expand-sm" >
         <div class="nav_icon" onclick="toggleSidebar()">
@@ -67,11 +72,11 @@
 
 
         <!-- Seccion Membresias -->
-      <div id="membresias"  style="display: none;">
+      <div id="membresias"  style="display: none; align-self: center;" >
+        <h1 style= "position: relative; left: 30%;" class="textoTitulo">Esta es su membresia</h1>
         
-        <h1 style= "position: relative; left: 270px;" class="textoTitulo">Esta es su membresia</h1>
         <div style="position: relative; right: 160px;" class="container2">
-          <div class="cards" style="position: relative; left: 100px;">
+          <div class="cards" style="position: relative; left: 100px; align-items: center;">
             <h2 style="text-align: center" class="text-muted" id="idMembresia" >id</h2>
             <h1 style="text-align: center " class="title_Cards" >$
               <small id="precioMembresia">0</small>
