@@ -336,7 +336,6 @@ public final class App {
             for (Object o : objects ) {
                 rutinas.add((Rutina)o);
             }
-
             model.put("rutinas", rutinas);
             model.put("email", email);
             return new ModelAndView(model, "rutinasEntrenador.ftl"); // located in src/test/resources/spark/template/freemarker
@@ -405,6 +404,52 @@ public final class App {
             return "Membresia Actualizada";
 
         });
+
+        post("/borrarRutina", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String id;
+
+            id = peticion.get("Id").getAsString();
+            RutinaDAO rutinaDAO = new RutinaDAO();
+            rutinaDAO.delete(id);
+            
+            return "Se borró " + id;
+
+        });
+
+        post("/getDatosRutina", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+            Gson gson = new Gson();
+
+            String id = peticion.get("Id").getAsString();
+            RutinaDAO rutinaDAO = new RutinaDAO();
+            Rutina rutina = (Rutina)rutinaDAO.readByIdentifier(id);
+                        
+            return gson.toJson(rutina);
+        });
+
+        post("/clientesRutina", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            Map<String, Object> model = new HashMap<>();
+
+            List<Cliente> clientes = new ArrayList<Cliente>();
+            String email = peticion.get("Email").getAsString();
+            
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            ArrayList<Object> objects = entrenadorDAO.getClientes(email);
+
+            for (Object o : objects ) {
+                clientes.add((Cliente)o);
+            }
+
+            model.put("clientes", clientes);
+            return new ModelAndView(model, "clientesRutina.ftl"); // located in src/test/resources/spark/template/freemarker
+        }, new FreeMarkerEngine());
 
     }
 

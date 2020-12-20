@@ -73,6 +73,26 @@ public class RutinaDAO implements DAO {
 
     }
 
+    public ArrayList<String> getClientes(String identifier) {
+        ArrayList<String> clientes = new ArrayList<String>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("SELECT correo FROM clienterutina where id_r = ?");
+            stmt.setString(1, identifier);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                clientes.add(rs.getString("correo"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+        return clientes;
+    }
+
     @Override
     public Object readByIdentifier(String identifier) {
         Connection conn = null;

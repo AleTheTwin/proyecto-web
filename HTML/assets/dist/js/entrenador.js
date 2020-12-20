@@ -1,4 +1,5 @@
 var alerta = document.getElementById("alerta")
+var idRutina;
 alerta.style.display = 'none';
 var actualizar = document.getElementById('actualizar');
 var sesion = getCookie("Sesion")
@@ -14,8 +15,8 @@ var password;
 
 var rutinas = document.getElementById("rutinas")
 
-axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
-// axios.post('http://localhost:4567/rutinasEntrenador',  {
+// axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
+axios.post('http://localhost:4567/rutinasEntrenador',  {
     Email: sesion
 })
 .then(function (response) {
@@ -204,4 +205,48 @@ function isNumber(e) {
     alert("La edad es mayor a 80")
     document.getElementById('inputEdadCLI').value=0;
   }
+}
+
+//Borrar rutina
+
+function borrarRutina() {
+  // axios.post('https://gimnasio-sw.herokuapp.com/borrarRutina',  {
+  axios.post('http://localhost:4567/borrarRutina',  {
+      Id:idRutina
+  })
+  .then(function (response) {
+    alert("Se borró")
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+}
+
+function guardarIdRutina(id) {
+  idRutina = id
+}
+
+function editarRutina(id) {
+  guardarIdRutina(id)
+  // axios.post('https://gimnasio-sw.herokuapp.com/getDatosRutina',  {
+  axios.post('http://localhost:4567/getDatosRutina',  {
+      Id:idRutina
+  })
+  .then(function (response) {
+    document.getElementById("rutinaId").value = response.data.id
+    document.getElementById("rutinaDescripcion").value = response.data.descripcion
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  axios.post('http://localhost:4567/clientesRutina',  {
+      Email: sesion
+  })
+  .then(function (response) {
+    document.getElementById("clientesAsignados").innerHTML = response.data
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+
 }

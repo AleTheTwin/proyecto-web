@@ -35,7 +35,7 @@
   </#list>
   </div>  -->
 
-  <h1 style= "text-align: center;">aaa</h1>
+
   <div class="row">
   <#list membresias as membresia>
     <div class="cards col-sm" style="justify-content: space-between; margin: 20px;">

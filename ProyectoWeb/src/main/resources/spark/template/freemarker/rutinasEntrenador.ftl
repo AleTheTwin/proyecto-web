@@ -17,8 +17,9 @@
     <div class="cards col-sm">
       <h2 style="text-align: center" class="text-muted">${rutina.id}</h2>
       <ul class="list-unstyled mt-3 mb-5" style="position: relative; text-align: center" >
-        <li id="descripcionMembresia">${rutina.descripcion}</li>
-        <button type="button" class="btn btn-success">Editar</button>
+        <li>${rutina.descripcion}</li>
+        <button type="button" class="btn btn-success" onclick="editarRutina('${rutina.id}')" data-bs-toggle="modal" data-bs-target="#editarRutina">Editar</button>
+        <button type="button" class="btn btn-danger"  onclick="guardarIdRutina('${rutina.id}')" data-bs-toggle="modal" data-bs-target="#borrarModal">Borrar</button>
       </ul>
     </div>
   </#list>
