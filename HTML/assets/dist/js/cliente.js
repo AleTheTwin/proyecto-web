@@ -12,9 +12,22 @@ var contraseñaConfirmConfig = document.getElementById("passwordConfirmConfig");
 var edadConfig = document.getElementById("edadConfig");
 var sexoConfig = document.getElementById("sexoConfig");
 var tipoConfig = document.getElementById("tipoConfig");
+var membresiaMenu = document.getElementById("membresiaMenu");
 var password;
 
 var rutinas = document.getElementById("rutinas")
+
+// axios.post('https://gimnasio-sw.herokuapp.com/membresiasFTL',  {
+axios.post('http://localhost:4567/membresiasFTL',  {
+    Email: sesion
+})
+.then(function (response) {
+    console.log(response.data)
+    membresiaMenu.innerHTML = response.data;    
+})
+.catch(function (error) {
+    console.log(error)
+})
 
 axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
 // axios.post('http://localhost:4567/rutinas',  {

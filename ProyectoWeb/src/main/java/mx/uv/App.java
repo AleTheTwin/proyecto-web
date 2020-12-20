@@ -30,6 +30,8 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
+
+        JsonParser parser = new JsonParser();
         port(getHerokuAssignedPort());
         options("/*", (request, response) -> {
 
@@ -50,7 +52,7 @@ public final class App {
         get("/", (request, response) -> "Hola");
     
         post("/login", (request, response) -> {
-            JsonParser parser = new JsonParser();
+            
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -74,7 +76,6 @@ public final class App {
         
 
         post("/loginEntrenador", (request, response) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -96,7 +97,6 @@ public final class App {
         });
 
         post("/registro", (req, res) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(req.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -133,8 +133,9 @@ public final class App {
 
         });
 
+        
+
         post("/actualizarCliente", (req, res) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(req.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -182,7 +183,6 @@ public final class App {
         });
 
         post("/actualizarEntrenador", (req, res) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(req.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -222,7 +222,6 @@ public final class App {
         });
 
         post("/registroEntrenador", (req, res) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(req.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -260,13 +259,11 @@ public final class App {
                 membresiasMap.put(("id" + Integer.toString(i)), (Membresia)o);
                 i++;
             }
-            Map<String, Object> model = new HashMap<>();
             
             return gson.toJson(membresiasMap);
         });
 
         post("/membresiaByEmail", (request, response) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
             Gson gson = new Gson();
@@ -283,7 +280,6 @@ public final class App {
         });
 
         post("/getDatos", (request, response) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
             Gson gson = new Gson();
@@ -296,7 +292,6 @@ public final class App {
         });
 
         post("/getDatosEntrenador", (request, response) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
             Gson gson = new Gson();
@@ -309,7 +304,6 @@ public final class App {
         });
         
         post("/rutinas", (request, response) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -329,7 +323,6 @@ public final class App {
         }, new FreeMarkerEngine());
 
         post("/rutinasEntrenador", (request, response) -> {
-            JsonParser parser = new JsonParser();
             JsonElement arbol = parser.parse(request.body());
             JsonObject peticion = arbol.getAsJsonObject();
 
@@ -347,6 +340,34 @@ public final class App {
             model.put("email", email);
             return new ModelAndView(model, "rutinasEntrenador.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
+
+        post("/membresiasFTL", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+            Map<String, Object> model = new HashMap<>();
+            List<Membresia> membresias = new ArrayList<Membresia>();
+            String email = peticion.get("Email").getAsString();
+            
+            MembresiaDAO membresiaDAO = new MembresiaDAO();
+            Membresia membresia = (Membresia)membresiaDAO.getByCliente(email);
+            ArrayList<Object> objects = membresiaDAO.readAll();
+
+            for (Object o : objects ) {
+                membresias.add((Membresia)o);
+            }
+            //pruebas
+            String prueba = "";
+            for(Membresia m : membresias) {
+                prueba += m.toString();
+            }
+
+            model.put("membresias", membresias);
+            model.put("jeje", prueba);
+            model.put("email", email);
+            model.put("selected", membresia.getId());
+            return new ModelAndView(model, "membresias.ftl"); // located in src/test/resources/spark/template/freemarker
+        }, new FreeMarkerEngine());
+
     }
 
     static int getHerokuAssignedPort() {

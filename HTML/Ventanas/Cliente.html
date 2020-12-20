@@ -17,6 +17,27 @@
     <title>Pagina Cliente</title>
   </head>
   <body id="body">
+
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="membresiaSelect" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" style="width: 1000px;">
+        <div class="modal-content" style="width: 1000px;">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Seleccione su membresía</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id=membresiaMenu>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <!-- INICIO DE NAV_BAR -->
       <nav class="navbar navbar-expand-sm" >
@@ -36,7 +57,7 @@
 
     <main>
         <!-- Division de Rutinas  -->
-    <div  id="rutinas" style="display: inline;" >      
+    <div  id="rutinas" style="display: none;" >      
       <div  class="container">
         <div id="rutinas"></div>
       </div> 
@@ -55,7 +76,7 @@
             <ul class="list-unstyled mt-3 mb-5" style="margin-top: 20px; text-align: center" >
               <li id="descripcionMembresia"></li>
             </ul>
-              <button class="Button" style="margin-top: 20px; text-align: center">Cambiar Membresia</button>
+              <button class="Button" style="margin-top: 20px; text-align: center" data-bs-toggle="modal" data-bs-target="#membresiaSelect">Cambiar Membresia</button>
           </div>
         </div>
       </div>
