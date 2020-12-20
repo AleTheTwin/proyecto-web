@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Cliente</title>
   </head>
-  <body id="body">
+  <body >
 
     <!-- Button trigger modal -->
 
@@ -42,7 +42,7 @@
     </div>
     
     <!-- fin de modal -->
-    <div class="container">
+    <div class="container1">
       
       <!-- INICIO DE NAV_BAR -->
       <nav class="navbar navbar-expand-sm" >
@@ -52,7 +52,7 @@
 
         <div class="main__title">
           <div class="main__greeting">
-            <h1 id="nombreCliente">Hola</h1>
+            <h1 style="  font-family: 'Lato', sans-serif;font-weight: 100;" id="nombreCliente">Hola</h1>
           </div>
         </div>
       </nav>
@@ -60,10 +60,10 @@
 
 <!-- Division de membresias empieza aqui -->
 
-    <main>
+    <main class="main">
         <!-- Division de Rutinas  -->
     <div  id="rutinas" style="display: none;" >      
-      <div  class="container">
+      <div  class="container1">
         <div id="rutinas"></div>
       </div> 
     </div>
@@ -73,19 +73,18 @@
 
         <!-- Seccion Membresias -->
       <div id="membresias"  style="display: none; align-self: center;" >
-        <h1 style= "position: relative; left: 30%;" class="textoTitulo">Esta es su membresia</h1>
         
-        <div style="position: relative; right: 160px;" class="container2">
+        <div style="position: absolute; right: 160px;" class="container2">
           <div class="cards" style="position: relative; left: 100px; align-items: center;">
-            <h2 style="text-align: center" class="text-muted" id="idMembresia" >id</h2>
+            <h2 style="text-align: center" class="texto" id="idMembresia" >id</h2>
             <h1 style="text-align: center " class="title_Cards" >$
               <small id="precioMembresia">0</small>
-              <small class="text-muted">/ mes</small>
+              <small class="texto">/ mes</small>
             </h1>
             <ul class="list-unstyled mt-3 mb-5" style="margin-top: 20px; text-align: center" >
-              <li id="descripcionMembresia"></li>
+              <li class="texto" id="descripcionMembresia"></li>
             </ul>
-              <button class="Button" style="margin-top: 20px; text-align: center" data-bs-toggle="modal" data-bs-target="#membresiaSelect">Cambiar Membresia</button>
+              <button class="Button" style="margin-top: 20px; text-align: center" data-bs-toggle="modal" data-bs-target="#membresiaSelect">Cambiar membresia</button>
           </div>
         </div>
       </div>
@@ -150,7 +149,7 @@
                 <option value="pro">Experto</option>
               </select>
             </div>
-            <div class="container" style="position: relative; left: 20px;">
+            <div class="container1" style="position: relative; left: 20px;">
               <button type="button" class="btn btn-success" id="actualizar" >Actualizar datos</button>
             </div>
           </div>
