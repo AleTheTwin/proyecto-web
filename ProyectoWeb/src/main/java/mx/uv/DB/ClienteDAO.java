@@ -94,6 +94,25 @@ public class ClienteDAO implements DAO {
         }
     }
 
+    public void updateMembresia(String identifiier, String membresia) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("update paga set id_m = ? where correo = ?");
+            stmt.setString(1, membresia);
+            stmt.setString(2, identifiier);
+            stmt.execute();
+            System.out.println("Yeeeeeeeeeeeeeeeeeeeeeees");
+        } catch (Exception e) {
+            System.out.println("Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuk");
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+    }
+
     @Override
     public void create(Object objeto) {
         Connection conn = null;
