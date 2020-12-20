@@ -17,8 +17,8 @@ var password;
 
 var rutinas = document.getElementById("rutinas")
 
-// axios.post('https://gimnasio-sw.herokuapp.com/membresiasFTL',  {
-axios.post('http://localhost:4567/membresiasFTL',  {
+axios.post('https://gimnasio-sw.herokuapp.com/membresiasFTL',  {
+// axios.post('http://localhost:4567/membresiasFTL',  {
     Email: sesion
 })
 .then(function (response) {
@@ -189,8 +189,8 @@ function desplegarConfiguracion(){
 
 function desplegarRutinas(){
   var id = document.getElementById("rutinas");
-  // axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-  axios.post('http://localhost:4567/rutinas',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+  // axios.post('http://localhost:4567/rutinas',  {
       Email: sesion
   })
   .then(function (response) {
@@ -240,8 +240,8 @@ function isNumber(e) {
 //funcion de selección de membresía
 
 function seleccionarMembresia(id) {
-  // axios.post('https://gimnasio-sw.herokuapp.com/updateMembresiaCliente',  {
-  axios.post('http://localhost:4567/updateMembresiaCliente',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/updateMembresiaCliente',  {
+  // axios.post('http://localhost:4567/updateMembresiaCliente',  {
       Email: sesion,
       Id: id
   })

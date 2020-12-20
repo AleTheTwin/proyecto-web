@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/HTML/assets/dist/css/cliente.css" />
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <title>Pagina Entrenador</title>
+    <title>Entrenador</title>
   </head>
   <body id="body">
     <div class="container">
@@ -36,27 +36,16 @@
 
     <main>
         <!-- Division de Rutinas  -->
-    <div  id="rutinas" style="display: inline;" >      
+    <div  id="rutinas" style="display: none;" >      
       <div  class="container">
         <div id="rutinas"></div>
       </div> 
     </div>
 <!-- Fin de division rutinas -->
-        <!-- Seccion Membresias -->
-      <div id="membresias"  style="display: none;" id="clientes">
-        <h1 style= "position: relative; left: 270px;">Estos son sus clientes</h1>
-        <div style="position: relative; right: 160px;" class="container2">
-          <div class="cards" style="position: relative; left: 100px;">
-            <h2 style="text-align: center" class="text-muted" id="idMembresia" >id</h2>
-            <h1 style="text-align: center " class="title_Cards" >$
-              <small id="precioMembresia">0</small>
-              <small class="text-muted">/ mes</small>
-            </h1>
-            <ul class="list-unstyled mt-3 mb-5" style="margin-top: 20px; text-align: center" >
-              <li id="descripcionMembresia"></li>
-            </ul>
-              <button class="Button" style="margin-top: 20px; text-align: center">Cambiar Membresia</button>
-          </div>
+        <!-- Seccion Clientes -->
+      <div  style="display: none;" id="clientesSeccion">
+        <div  id="clientes" class="container2">
+          
         </div>
       </div>
           
@@ -156,7 +145,7 @@
           </div>
           <div class="sidebar__link">
             <i class="fa fa-money"></i>
-            <a href="#" onclick="desplegarMembresia()">Clientes</a>
+            <a href="#" onclick="desplegarClientes()">Clientes</a>
           </div>
           <div class="sidebar__link">
             <i class="fa fa-wrench"></i>
