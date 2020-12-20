@@ -9,17 +9,30 @@ var emailConfig = document.getElementById("emailConfig");
 var contraseñaConfig = document.getElementById("passwordConfig");
 var contraseñaConfirmConfig = document.getElementById("passwordConfirmConfig");
 var tipoConfig = document.getElementById("tipoConfig");
+var clientes = document.getElementById("clientes");
 var password;
 
 var rutinas = document.getElementById("rutinas")
 
-axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
 // axios.post('http://localhost:4567/rutinasEntrenador',  {
     Email: sesion
 })
 .then(function (response) {
     console.log(response.data)
     rutinas.innerHTML = response.data;    
+})
+.catch(function (error) {
+    console.log(error)
+})
+
+// axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
+axios.post('http://localhost:4567/clientesAsignados',  {
+    Email: sesion
+})
+.then(function (response) {
+    console.log(response.data)
+    clientes.innerHTML = response.data;    
 })
 .catch(function (error) {
     console.log(error)
@@ -44,6 +57,7 @@ actualizar.addEventListener('click', function () {
   var actualizaPass = "SI";
   if(nombreConfig.value != "") {
     if(emailConfig.value != "") {
+      alert(emailConfig.value)
       if(contraseñaConfig.value != "" && contraseñaConfirmConfig.value == "") {
         alerta.innerHTML = "Confirme su contraseña";
       } else if(contraseñaConfig.value == "" && contraseñaConfirmConfig.value != "") {
@@ -58,8 +72,8 @@ actualizar.addEventListener('click', function () {
           contraseñaConfig.value = window.btoa(contraseñaConfig.value);
         }
         alerta.style.display = 'none'
-        // axios.post('http://localhost:4567/actualizarEntrenador',  {
-        axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
+        axios.post('http://localhost:4567/actualizarEntrenador',  {
+        // axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
               Email: sesion,
               Correo: emailConfig.value,
               Password: contraseñaConfig.value,
@@ -76,7 +90,7 @@ actualizar.addEventListener('click', function () {
               alerta.class = "alert alert-success";
               alerta.innerHTML = "Actualización correcta";
               alerta.style.display = 'inline';
-              location.href="/HTML/Ventanas/Entrenador.html";
+              //location.href="/HTML/Ventanas/Entrenador.html";
             }
         })
         .catch(function (error) {
@@ -120,26 +134,10 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
-function desplegarMembresia(){
-  var precio = document.getElementById("precioMembresia");
-  var descripcion = document.getElementById("descripcionMembresia");
-  var id = document.getElementById("idMembresia");
-  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
-  // axios.post('http://localhost:4567/membresiaByEmail',  {
-      Email: sesion
-  })
-  .then(function (response) {
-    precio.innerHTML = response.data.precio;
-    descripcion.innerHTML = response.data.descripcion;
-    id.innerHTML = response.data.id;
-  })
-  .catch(function (error) {
-      console.log(error)
-  })
-  
+function desplegarClientes(){
   document.getElementById('rutinas').style.display="none";
   document.getElementById('configuracion').style.display="none";
-  document.getElementById('membresias').style.display="flex";
+  document.getElementById('clientesSeccion').style.display="inline";
 }
 
 
@@ -162,32 +160,17 @@ function desplegarConfiguracion(){
   })
   
   document.getElementById('rutinas').style.display="none";
-  document.getElementById('membresias').style.display="none";
+  document.getElementById('clientesSeccion').style.display="none";
   document.getElementById('configuracion').style.display="flex";
 }
 
 
 
 function desplegarRutinas(){
-  var precio = document.getElementById("precioMembresia");
-  var descripcion = document.getElementById("descripcionMembresia");
-  var id = document.getElementById("idMembresia");
-  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
-  // axios.post('http://localhost:4567/membresiaByEmail',  {
-      Email: sesion
-  })
-  .then(function (response) {
-    precio.innerHTML = response.data.precio;
-    descripcion.innerHTML = response.data.descripcion;
-    id.innerHTML = response.data.id;
-  })
-  .catch(function (error) {
-      console.log(error)
-  })
-  
+   
   document.getElementById('configuracion').style.display="none";
-  document.getElementById('membresias').style.display="none";
-  document.getElementById('rutinas').style.display="flex";
+  document.getElementById('clientesSeccion').style.display="none";
+  document.getElementById('rutinas').style.display="inLine";
 }
 
 

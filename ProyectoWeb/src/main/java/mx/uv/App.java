@@ -194,14 +194,14 @@ public final class App {
             String nombre;
             String tipoE;
             email = peticion.get("Email").getAsString();
-            correo = peticion.get("Correo ").getAsString();
+            correo = peticion.get("Correo").getAsString();
             pass = peticion.get("Password").getAsString();
+            nombre = peticion.get("Nombre").getAsString();
+            tipoE = peticion.get("Tipo").getAsString();
             actualizar = peticion.get("SeActualiza").getAsString();
             if(actualizar.equals("SI")) {
                 pass = Hash.getHash(pass);
             }
-            nombre = peticion.get("Nombre").getAsString();
-            tipoE = peticion.get("Tipo").getAsString();
 
             Entrenador entrenador = new Entrenador(correo, pass, nombre, tipoE);
             EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
@@ -367,6 +367,27 @@ public final class App {
             model.put("email", email);
             model.put("selected", membresia.getId());
             return new ModelAndView(model, "membresias.ftl"); // located in src/test/resources/spark/template/freemarker
+        }, new FreeMarkerEngine());
+
+        post("/clientesAsignados", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            Map<String, Object> model = new HashMap<>();
+
+            List<Cliente> clientes = new ArrayList<Cliente>();
+            String email = peticion.get("Email").getAsString();
+            
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            ArrayList<Object> objects = entrenadorDAO.getClientes(email);
+
+            for (Object o : objects ) {
+                clientes.add((Cliente)o);
+            }
+
+            model.put("clientes", clientes);
+            model.put("email", email);
+            return new ModelAndView(model, "clientes.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
 
         post("/updateMembresiaCliente", (request, response) -> {

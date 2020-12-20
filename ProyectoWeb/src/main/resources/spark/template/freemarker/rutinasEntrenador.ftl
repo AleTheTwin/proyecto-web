@@ -18,7 +18,7 @@
       <h2 style="text-align: center" class="text-muted">${rutina.id}</h2>
       <ul class="list-unstyled mt-3 mb-5" style="position: relative; text-align: center" >
         <li id="descripcionMembresia">${rutina.descripcion}</li>
-        <button type="button" class="button btn-success">Editar</button>
+        <button type="button" class="btn btn-success">Editar</button>
       </ul>
     </div>
   </#list>

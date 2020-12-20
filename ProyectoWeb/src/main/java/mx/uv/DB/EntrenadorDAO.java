@@ -51,6 +51,27 @@ public class EntrenadorDAO implements DAO {
 
     }
 
+    public ArrayList<Object> getClientes(String identifier) {
+        ArrayList<Object> clientes = new ArrayList<Object>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("SELECT * FROM entrenadorcliente where correo_E = ?");
+            stmt.setString(1, identifier);
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                clientes.add(new Cliente(rs.getString("Correo_C"), "passwordNotNeeded", rs.getString("NombreC"), rs.getInt("Edad"), rs.getBoolean("Sexo"), rs.getString("tipoCliente")));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+        
+        return clientes;
+    }
+
     @Override
     public void update(Object objeto, String identifier) {
         Connection conn = null;
@@ -59,7 +80,7 @@ public class EntrenadorDAO implements DAO {
         
         try {
             conn = new ConexionDB().getConexion();
-            stmt = conn.prepareStatement("UPDATE entrenador SET correo = ?, password = ?, NombreE = ?, tipcoE = ? where correo = ?");
+            stmt = conn.prepareStatement("UPDATE entrenador SET correo = ?, password = ?, nombreE = ?, tipoE = ? where correo = ?");
             stmt.setString(1, entrenador.getCorreo());
             stmt.setString(2, entrenador.getPassword());
             stmt.setString(3, entrenador.getNombreE());
