@@ -18,7 +18,7 @@
   </head>
   <body id="body">
 
-    <!-- Modal -->
+    <!-- Modal Borrar -->
     <div class="modal fade" id="borrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal Editar -->
     <div class="modal fade" id="editarRutina" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -63,8 +63,42 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" onclick="updateRutina()">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Editar -->
+    <div class="modal fade" id="nuevaRutina" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar rutina</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="form-floating mb-3 container-fluid" >
+                <input type="text" class="form-control" id="inputId">
+                <label for="floatingInput" style="left: 10px;" > ID de la rutina</label>
+              </div>
+              <div class="form-floating mb-3 container-fluid" >
+                <input type="text" class="form-control" id="inputDescripcion">
+                <label for="floatingInput" style="left: 10px;" > Descripción de la rutina</label>
+              </div>
+              
+                <label for="floatingInput" style="left: 10px;" > Seleccione los clientes que tendrán la rutina</label>
+              
+              <div class="form-floating mb-3 container-fluid" id="clientesAsignados2">
+
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-success" onclick="createRutina()">Guardar cambios</button>
           </div>
         </div>
       </div>
@@ -89,7 +123,7 @@
 
     <main>
         <!-- Division de Rutinas  -->
-    <div  id="rutinas" style="display: none;" >      
+    <div  id="rutinas" style="display: none;" >
       <div  class="container1">
         <div id="rutinas"></div>
       </div> 

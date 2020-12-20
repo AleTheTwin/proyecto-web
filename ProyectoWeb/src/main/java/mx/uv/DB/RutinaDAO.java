@@ -29,6 +29,23 @@ public class RutinaDAO implements DAO {
         return rutinas;
     }
 
+    public void actalizarAsignado(String id, String correo) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("UPDATE tiene_asignado_r SET correoC = ? where id_r = ?");
+            stmt.setString(1, correo);
+            stmt.setString(2, id);
+            stmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+    }
+
     public ArrayList<Object> readByCliente(String identifier) {
         ArrayList<Object> rutinas = new ArrayList<Object>();
         Connection conn = null;

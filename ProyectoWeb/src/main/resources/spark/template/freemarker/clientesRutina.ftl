@@ -1,8 +1,7 @@
-<#list clientes as cliente>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id=${cliente_index}>
-  <label class="form-check-label" for="flexCheckDefault">
-    ${cliente.nombreC}
-  </label>
+<div class="form-floating mb-3 container-fluid">
+    <select class="form-select" aria-label="Default select example" id="clienteARutina">
+    <#list clientes as cliente>
+        <option value=${cliente.correo}>${cliente.correo}</option>
+    </#list>
+    </select>
 </div>
-</#list>

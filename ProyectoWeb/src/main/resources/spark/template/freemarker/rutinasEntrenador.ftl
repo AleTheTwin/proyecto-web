@@ -11,7 +11,10 @@
     </#list>
   </ul>
 </div>  -->
-  <h1 style= "text-align: center;">Estas son sus rutinas</h1>
+  <h1 style= "text-align: center;">Estas son sus rutinas 
+  <button type="button" class="btn btn-success" onclick="llenarModal()" data-bs-toggle="modal" data-bs-target="#nuevaRutina">Nueva rutina</button>
+  </h1>
+  
   <div class="row">
   <#list rutinas as rutina>
     <div class="cards col-sm">

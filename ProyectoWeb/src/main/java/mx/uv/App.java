@@ -451,6 +451,48 @@ public final class App {
             return new ModelAndView(model, "clientesRutina.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
 
+        post("/updateRutina", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String id = peticion.get("Id").getAsString();
+            String newId = peticion.get("NewId").getAsString();
+            String descripcion = peticion.get("Descripcion").getAsString();
+            String cliente = peticion.get("Cliente").getAsString();
+            RutinaDAO rutinaDAO = new RutinaDAO();
+            rutinaDAO.update(new Rutina(newId, descripcion), id);
+
+            ArrayList<String> clientes = rutinaDAO.getClientes(newId);
+            if(clientes!=null) {
+                for(String s : clientes) {
+                    if(!s.equals(cliente)) {
+                        rutinaDAO.actalizarAsignado(newId, cliente);
+                    }
+                }
+            } else {
+                ClienteDAO clienteDAO = new ClienteDAO();
+                clienteDAO.asginarRutina(cliente, newId);
+            }
+            
+                        
+            return "actualizada " + id;
+        });
+
+        post("/createRutina", (request, response) -> {
+            JsonElement arbol = parser.parse(request.body());
+            JsonObject peticion = arbol.getAsJsonObject();
+
+            String id = peticion.get("Id").getAsString();
+            String descripcion = peticion.get("Descripcion").getAsString();
+            String cliente = peticion.get("Cliente").getAsString();
+            RutinaDAO rutinaDAO = new RutinaDAO();
+            rutinaDAO.create(new Rutina(id, descripcion));
+            ClienteDAO clienteDAO = new ClienteDAO();
+            clienteDAO.asginarRutina(cliente, id);
+                        
+            return "actualizada " + id;
+        });
+
     }
 
     static int getHerokuAssignedPort() {
