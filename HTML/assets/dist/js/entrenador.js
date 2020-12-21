@@ -15,8 +15,8 @@ var password;
 
 var rutinas = document.getElementById("rutinas")
 
-// axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
-axios.post('http://localhost:4567/rutinasEntrenador',  {
+axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
+// axios.post('http://localhost:4567/rutinasEntrenador',  {
     Email: sesion
 })
 .then(function (response) {
@@ -26,8 +26,8 @@ axios.post('http://localhost:4567/rutinasEntrenador',  {
     console.log(error)
 })
 
-// axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
-axios.post('http://localhost:4567/clientesAsignados',  {
+axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
+// axios.post('http://localhost:4567/clientesAsignados',  {
     Email: sesion
 })
 .then(function (response) {
@@ -71,8 +71,8 @@ actualizar.addEventListener('click', function () {
           contraseñaConfig.value = window.btoa(contraseñaConfig.value);
         }
         alerta.style.display = 'none'
-        axios.post('http://localhost:4567/actualizarEntrenador',  {
-        // axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
+        // axios.post('http://localhost:4567/actualizarEntrenador',  {
+        axios.post('https://gimnasio-sw.herokuapp.com/actualizarEntrenador',  {
               Email: sesion,
               Correo: emailConfig.value,
               Password: contraseñaConfig.value,
@@ -89,7 +89,7 @@ actualizar.addEventListener('click', function () {
               alerta.class = "alert alert-success";
               alerta.innerHTML = "Actualización correcta";
               alerta.style.display = 'inline';
-              //location.href="/HTML/Ventanas/Entrenador.html";
+              location.href="/HTML/Ventanas/Entrenador.html";
             }
         })
         .catch(function (error) {
@@ -208,8 +208,8 @@ function isNumber(e) {
 //Borrar rutina
 
 function borrarRutina() {
-  // axios.post('https://gimnasio-sw.herokuapp.com/borrarRutina',  {
-  axios.post('http://localhost:4567/borrarRutina',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/borrarRutina',  {
+  // axios.post('http://localhost:4567/borrarRutina',  {
       Id:idRutina
   })
   .then(function (response) {
@@ -226,8 +226,8 @@ function guardarIdRutina(id) {
 
 function editarRutina(id) {
   guardarIdRutina(id)
-  // axios.post('https://gimnasio-sw.herokuapp.com/getDatosRutina',  {
-  axios.post('http://localhost:4567/getDatosRutina',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/getDatosRutina',  {
+  // axios.post('http://localhost:4567/getDatosRutina',  {
       Id:idRutina
   })
   .then(function (response) {
@@ -237,7 +237,8 @@ function editarRutina(id) {
   .catch(function (error) {
       console.log(error)
   })
-  axios.post('http://localhost:4567/clientesRutina',  {
+  // axios.post('http://localhost:4567/clientesRutina',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/clientesRutina',  {
       Email: sesion
   })
   .then(function (response) {
@@ -250,7 +251,8 @@ function editarRutina(id) {
 }
 
 function updateRutina() {
-  axios.post('http://localhost:4567/updateRutina',  {
+  // axios.post('http://localhost:4567/updateRutina',  {
+    axios.post('https://gimnasio-sw.herokuapp.com/updateRutina',  {
       Id:idRutina,
       NewId: document.getElementById("rutinaId").value,
       Descripcion: document.getElementById("rutinaDescripcion").value,
@@ -265,7 +267,7 @@ function updateRutina() {
 }
 
 function llenarModal() {
-  axios.post('http://localhost:4567/clientesRutina',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/clientesRutina',  {
     Email: sesion
   })
   .then(function (response) {
@@ -278,10 +280,11 @@ function llenarModal() {
 }
 
 function createRutina() {
-  axios.post('http://localhost:4567/createRutina',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/createRutina',  {
     Id: document.getElementById("inputId").value,
     Descripcion: document.getElementById("inputDescripcion").value,
-    Cliente: document.getElementById("clienteARutina").value
+    Cliente: document.getElementById("clienteARutina").value,
+    Email: sesion
   })
   .then(function (response) {
     location.href = "/HTML/Ventanas/Entrenador.html"

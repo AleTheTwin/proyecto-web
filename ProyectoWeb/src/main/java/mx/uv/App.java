@@ -483,12 +483,15 @@ public final class App {
             JsonObject peticion = arbol.getAsJsonObject();
 
             String id = peticion.get("Id").getAsString();
+            String email = peticion.get("Email").getAsString();
             String descripcion = peticion.get("Descripcion").getAsString();
             String cliente = peticion.get("Cliente").getAsString();
             RutinaDAO rutinaDAO = new RutinaDAO();
             rutinaDAO.create(new Rutina(id, descripcion));
             ClienteDAO clienteDAO = new ClienteDAO();
             clienteDAO.asginarRutina(cliente, id);
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            entrenadorDAO.crearRutina(email, id);
                         
             return "actualizada " + id;
         });
