@@ -82,3 +82,23 @@ create trigger deleteRutina2
 after delete on rutina 
 for each row
 delete from tiene_asignado_r where id_r= old.id;
+
+insert into entrenador values('entrenador@correo.com', '8c6608e70ba457e58a51ccb0cf59b71684d5abae', 'Entrenador', 'Novatos');
+***************************Esta cuenta se accede con contraseña: pass 
+insert into cliente values ('cliente@correo.com', '70a9dc4d99852ff42431af654bddfa578204cf00', 'ClientePrueba', 35, 1, 'hard');
+***************************Esta cuenta se accede con contraseña: prueba
+
+insert into tiene_asignado_c values('cliente@correo.com','entrenador@correo.com');
+
+insert into Membresia values('Free', 'Mejore para recibir los beneficios de su gimnasio', 0);
+insert into Membresia values('Basica', 'paga mes a mes', 250);
+insert into Membresia values('Medium', 'Contrata 6 meses, solo pagas 5', 208.33);
+insert into Membresia values('Pro', 'Contrata un año, solo pagas 9 meses', 187.5);
+
+
+
+
+
+
+
+
