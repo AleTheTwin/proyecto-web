@@ -243,7 +243,6 @@ public final class App {
             if(entrenadorP != null) {
                 return "0";
             } else {
-                //Mail.enviarEmail(nombre, email);
                 entrenadorDAO.create(cliente);
             }
             return email;
@@ -362,9 +361,6 @@ public final class App {
             }
 
             model.put("membresias", membresias);
-            model.put("jeje", prueba);
-            model.put("email", email);
-            model.put("selected", membresia.getId());
             return new ModelAndView(model, "membresias.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
 
@@ -483,12 +479,15 @@ public final class App {
             JsonObject peticion = arbol.getAsJsonObject();
 
             String id = peticion.get("Id").getAsString();
+            String email = peticion.get("Email").getAsString();
             String descripcion = peticion.get("Descripcion").getAsString();
             String cliente = peticion.get("Cliente").getAsString();
             RutinaDAO rutinaDAO = new RutinaDAO();
             rutinaDAO.create(new Rutina(id, descripcion));
             ClienteDAO clienteDAO = new ClienteDAO();
             clienteDAO.asginarRutina(cliente, id);
+            EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+            entrenadorDAO.crearRutina(email, id);
                         
             return "actualizada " + id;
         });

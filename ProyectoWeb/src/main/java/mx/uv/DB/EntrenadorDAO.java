@@ -51,6 +51,23 @@ public class EntrenadorDAO implements DAO {
 
     }
 
+    public void crearRutina(String email, String id) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("insert into crea_rutina values(?, ?)");
+            stmt.setString(1, id);
+            stmt.setString(2, email);
+            stmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+        
+    }
+
     public ArrayList<Object> getClientes(String identifier) {
         ArrayList<Object> clientes = new ArrayList<Object>();
         Connection conn = null;

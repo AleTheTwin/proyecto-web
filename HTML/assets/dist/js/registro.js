@@ -73,8 +73,31 @@ bRegistro.addEventListener('click', function () {
     }
     
 })
-
-
+////////////////////////////////////////////////////////////////////
+//                     Registro de Entrenadores                   //
+//var passEncode = window.btoa('pass');
+// axios.post('http://localhost:4567/registroEntrenador',  {
+//     Email: 'entrenador@gmail.com',
+//     Password: passEncode,
+//     NombreE: 'Manu',
+//     TipoEntrenador: 'Noob'
+// })
+// .then(function (response) {
+//     console.log(response.data);
+//     if(response.data==email){
+//         setCookie("Sesion", response.data, 0)
+//         location.href = "/HTML/Ventanas/Index.html";
+//     } else {
+//         alertaContenido.innerHTML = "El correo ya existe"
+//         alerta.style.display = 'inline';
+//         setCookie("Sesion", "", 0)
+//     }
+//     
+// })
+// .catch(function (error) {
+//     console.log(error)
+// })
+/////////////////////////////////////////////////////////////////////
 
 
 
