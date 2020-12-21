@@ -1,0 +1,84 @@
+create table cliente(Correo varchar(100) primary key, edad int, nombreC varchar(150), password varchar(255), sexo tinyint(1), tipoCliente varchar(20));
+create table crea_rutina(id_r varchar(255) primary key, correoE varchar(255) primary key);
+create table entrenador(Correo varchar(100) primary key, nombreE varchar(150), password varchar(255), tipoE varchar(30));
+create tabe Membresia(id varchar(50) primary key, descripcion varchar(255), precio double));
+create table paga(correo varchar(255) primary key, id_m varchar(255) primary key);
+create table rutina(id varchar(255) primary key, descripcion varchar(255));
+create table tiene_asignado_c(correo_c varchar(100) primary key, correo_e varchar(100) primary key);
+create table tiene_asignado_r(id_r varchar(255) primary key, correoc varchar(255) primary key);
+
+
+create view clienterutina as select id_r, descripcion, correo from cliente, tiene_asignado_r, rutina where correoC = correo and id_r = id;
+create view entrenadorcliente as select correo_c, nombreC, edad, sexo, tipoCliente, correo_E from entrenador, tiene_asignado_c, cliente where correo_c = cliente.correo and correo_e = entrenador.correo;
+create view entrenadorrutina as Select id_r, descripcion, correo from entrenador, crea_rutina, rutina where correo = correoE and id = id_r;
+create view membresiacliente as SELECT id, descripcion, precio, cliente.correo FROM cliente, paga, Membresia where cliente.Correo = paga.Correo and Membresia.id = paga.ID_M;
+
+create trigger updateClientePrueba
+after update on cliente 
+for each row
+update paga set correo= new.correo where correo = old.correo;
+
+create trigger deleteCliente
+after delete on cliente 
+for each row
+delete from paga where correo= old.correo;
+
+create trigger updateClientePrueba2
+after update on cliente 
+for each row
+update tiene_asignado_r set correoC=new.correo where correoC = old.correo;
+
+create trigger deleteCliente2
+after delete on cliente 
+for each row
+delete from tiene_asignado_r where correoC= old.correo;
+
+create trigger updateEntrenador
+after update on entrenador 
+for each row
+update crea_rutina set correoE= new.correo where correoE = old.correo;
+
+create trigger updateEntrenador2
+after update on entrenador 
+for each row
+update tiene_asignado_c set correo_E=new.correo where correo_C = old.correo;
+
+create trigger deleteEntrenador
+after delete on entrenador 
+for each row
+delete from crea_rutina where correoE= old.correo;
+
+create trigger deleteEntrenador2
+after delete on entrenador 
+for each row
+delete from tiene_asignado_c where correo_E= old.correo;
+
+create trigger updateMembresia
+after update on Membresia 
+for each row
+update paga set id_m= new.id where id_m = old.id;
+
+create trigger deleteMembresia
+after delete on Membresia 
+for each row
+delete from paga where id_m= old.id;
+
+create trigger updateRutina
+after update on rutina 
+for each row
+update crea_rutina set id_r= new.id where id_r = old.id;
+
+create trigger updateRutina2
+after update on rutina 
+for each row
+update tiene_asignado_r set id_r=new.id where id_r = old.id;
+
+create trigger deleteRutina
+after delete on rutina 
+for each row
+delete from crea_rutina where id_r= old.id;
+
+create trigger deleteRutina2
+after delete on rutina 
+for each row
+delete from tiene_asignado_r where id_r= old.id;
