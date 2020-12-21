@@ -20,7 +20,6 @@ axios.post('http://localhost:4567/rutinasEntrenador',  {
     Email: sesion
 })
 .then(function (response) {
-    console.log(response.data)
     rutinas.innerHTML = response.data;    
 })
 .catch(function (error) {
@@ -32,7 +31,6 @@ axios.post('http://localhost:4567/clientesAsignados',  {
     Email: sesion
 })
 .then(function (response) {
-    console.log(response.data)
     clientes.innerHTML = response.data;    
 })
 .catch(function (error) {
@@ -215,7 +213,7 @@ function borrarRutina() {
       Id:idRutina
   })
   .then(function (response) {
-    alert("Se borró")
+    location.href = "/HTML/Ventanas/Entrenador.html"
   })
   .catch(function (error) {
       console.log(error)
@@ -249,4 +247,47 @@ function editarRutina(id) {
       console.log(error)
   })
 
+}
+
+function updateRutina() {
+  axios.post('http://localhost:4567/updateRutina',  {
+      Id:idRutina,
+      NewId: document.getElementById("rutinaId").value,
+      Descripcion: document.getElementById("rutinaDescripcion").value,
+      Cliente: document.getElementById("clienteARutina").value
+  })
+  .then(function (response) {
+    location.href = "/HTML/Ventanas/Entrenador.html"
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+}
+
+function llenarModal() {
+  axios.post('http://localhost:4567/clientesRutina',  {
+    Email: sesion
+  })
+  .then(function (response) {
+    document.getElementById("clientesAsignados2").innerHTML = response.data
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  
+}
+
+function createRutina() {
+  axios.post('http://localhost:4567/createRutina',  {
+    Id: document.getElementById("inputId").value,
+    Descripcion: document.getElementById("inputDescripcion").value,
+    Cliente: document.getElementById("clienteARutina").value
+  })
+  .then(function (response) {
+    location.href = "/HTML/Ventanas/Entrenador.html"
+  })
+  .catch(function (error) {
+      console.log(error)
+  })
+  
 }

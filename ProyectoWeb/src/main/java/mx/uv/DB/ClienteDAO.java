@@ -51,6 +51,25 @@ public class ClienteDAO implements DAO {
 
     }
 
+    public void asginarRutina(String email, String id) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("insert into tiene_asignado_r(id_r, correoC) values(?, ?)");
+            stmt.setString(1, id);
+            stmt.setString(2, email);
+            stmt.execute();
+            System.out.println("Yeeeeeeeeeeeeeeeeeeeeeees");
+        } catch (Exception e) {
+            System.out.println("Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuk");
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+    }
+
     @Override
     public void update(Object objeto, String identifier) {
         Connection conn = null;
