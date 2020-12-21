@@ -56,7 +56,6 @@ actualizar.addEventListener('click', function () {
   var actualizaPass = "SI";
   if(nombreConfig.value != "") {
     if(emailConfig.value != "") {
-      alert(emailConfig.value)
       if(contraseñaConfig.value != "" && contraseñaConfirmConfig.value == "") {
         alerta.innerHTML = "Confirme su contraseña";
       } else if(contraseñaConfig.value == "" && contraseñaConfirmConfig.value != "") {
