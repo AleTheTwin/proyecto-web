@@ -35,16 +35,16 @@
   </#list>
   </div>  -->
 
-  <div class="row">
+  <div class="row" style="display:flex height:">
   <#list membresias as membresia>
-    <div class="cards col-sm" style="justify-content: space-between; margin: 20px;">
-      <h2 style="text-align: center" class="text-muted" >${membresia.id}</h2>
+    <div class="cards col-sm" style=" margin: 20px;">
+      <h2 style="text-align: center" class="texto" >${membresia.id}</h2>
       <h1 style="text-align: center " class="title_Cards" >$
         <small>${membresia.precio}</small>
-        <small class="text-muted">/ mes</small>
+        <small class="texto">/ mes</small>
       </h1>
       <ul class="list-unstyled mt-3 mb-5" style="margin-top: 20px; text-align: center" >
-        <li>${membresia.descripcion} </li>
+        <li class="texto">${membresia.descripcion} </li>
         <button class="btn btn-success" type="button" onclick="seleccionarMembresia('${membresia.id}')" >Seleccionar</button>
       </ul>
     </div>

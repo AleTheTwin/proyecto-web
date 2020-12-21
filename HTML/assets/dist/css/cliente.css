@@ -86,15 +86,22 @@ body {
     "sidebar main main main";
 }
 
+
+
+
+
+
+
+
 .navbar {
-  background: #ffffffe5;
+  background: #9c9a9ab9;
   grid-area: nav;
   height: 60px;
   
   align-items: center;
   justify-content: space-between;
   padding: 0 30px 0 30px;
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 1px solid rgba(136, 134, 134, 0.87);
 }
 .main{
   background-color: #e2e1e1d5;
@@ -111,7 +118,7 @@ body {
 
 
 main {
-  background: #f3f4f6;
+  background: #ffffff93;
   grid-area: main;
   overflow-y: auto;
   overflow-x: auto;
@@ -135,7 +142,7 @@ main {
 
 .main__greeting > h1 {
   font-size: 24px;
-  color: #2e4a66;
+  color: #ffffffda;
   margin-bottom: 5px;
   
 }
@@ -155,10 +162,13 @@ main {
   left:50%;
 }
 
+
+
+
 /*  SIDEBAR STARTS HERE  */
 
 #sidebar {
-  background: #020509;
+  background: #020509a6;
   grid-area: sidebar;
   overflow-y: auto;
   padding: 20px;
@@ -173,6 +183,14 @@ main {
   color: #f3f4f6;
   margin-bottom: 30px;
   /* color: #E85B6B; */
+}
+
+.form-control{
+transition: 0.7s;
+}
+
+.form-control:hover{
+  opacity: 0.8;
 }
 
 .sidebar__img {
@@ -212,7 +230,7 @@ main {
 }
 
 .active_menu_link {
-  background: rgba(62, 161, 117, 0.3);
+
   color: #3ea175;
 }
 
@@ -243,6 +261,10 @@ main {
   font-weight: 500;
   text-transform: uppercase;
 }
+
+
+
+
 
 .sidebar__logout > i {
   margin-right: 10px;
@@ -280,7 +302,6 @@ main {
 }
 .container2{
     margin-top: 100px;
-    display: flex;
     justify-content: space-between;
    
 }
@@ -289,17 +310,27 @@ main {
 
 @media only screen and (max-width: 480px) {
   .navbar__left {
-    display: none;
+    display: flex;
+  justify-content: right;
+  align-items: center;
+
   }
 }
 
 .cards{
     border: 2px;
-    background-color: #160f0fbb;
+    background-color: #160f0fe8;
    border-radius: 12px;
    padding: 50px;
+   transition: 0.4s;
+   margin: 20px;
 }
-  
+
+
+
+  .cards:hover{
+    opacity: 0.8;
+  }
 
 .text-muted{
 color: #000000b7;
@@ -334,6 +365,13 @@ color: #29a8f79c;
   font-weight: 100;
   color: #ffffff;
 }
+
+.texto1{
+  font-family: 'Lato', sans-serif; 
+  font-weight: 100;
+  color: #000000;
+}
+
 .camposEdit > i  {
   margin-bottom: 20px;
   padding: 22px;

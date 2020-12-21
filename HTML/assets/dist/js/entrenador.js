@@ -134,6 +134,7 @@ function sleep(milliseconds) {
 }
 
 function desplegarClientes(){
+  document.getElementById('nuevaRuti').style.display="none"
   document.getElementById('rutinas').style.display="none";
   document.getElementById('configuracion').style.display="none";
   document.getElementById('clientesSeccion').style.display="inline";
@@ -145,8 +146,8 @@ function desplegarConfiguracion(){
   var precio = document.getElementById("precioMembresia");
   var descripcion = document.getElementById("descripcionMembresia");
   var id = document.getElementById("idMembresia");
-  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
-  // axios.post('http://localhost:4567/membresiaByEmail',  {
+  //axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+   axios.post('http://localhost:4567/membresiaByEmail',  {
       Email: sesion
   })
   .then(function (response) {
@@ -157,7 +158,7 @@ function desplegarConfiguracion(){
   .catch(function (error) {
       console.log(error)
   })
-  
+  document.getElementById('nuevaRuti').style.display="none"
   document.getElementById('rutinas').style.display="none";
   document.getElementById('clientesSeccion').style.display="none";
   document.getElementById('configuracion').style.display="flex";
@@ -166,7 +167,7 @@ function desplegarConfiguracion(){
 
 
 function desplegarRutinas(){
-   
+  document.getElementById('nuevaRuti').style.display="flex"
   document.getElementById('configuracion').style.display="none";
   document.getElementById('clientesSeccion').style.display="none";
   document.getElementById('rutinas').style.display="inLine";

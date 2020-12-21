@@ -11,13 +11,13 @@
     </#list>
   </ul>
 </div>  -->
-  <h1 style= "text-align: center;" class:>Estas son sus rutinas</h1>
+  <h1 class="texto1" style= "text-align: center;" class:>Estas son sus rutinas</h1>
   <div class="row">
   <#list rutinas as rutina>
-    <div class="cards col-sm">
-      <h2 style="text-align: center" class="text-muted">${rutina.id}</h2>
+    <div class="cards col-sm" style="margin:20px padding:1px">
+      <h2 style="text-align: center" class="texto">${rutina.id}</h2>
       <ul class="list-unstyled mt-3 mb-5" style="position: relative; text-align: center" >
-        <li>${rutina.descripcion}</li>
+        <li class="texto">${rutina.descripcion}</li>
       </ul>
     </div>
   </#list>

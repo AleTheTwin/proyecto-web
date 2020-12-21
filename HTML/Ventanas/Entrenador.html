@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <title>Entrenador</title>
   </head>
-  <body id="body">
+  <body >
 
     <!-- Modal Borrar -->
     <div class="modal fade" id="borrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,13 +109,19 @@
       <nav class="navbar navbar-expand-sm" >
         <div class="nav_icon" onclick="toggleSidebar()">
           <i class="fa fa-bars" aria-hidden="true"></i>
+          
         </div>
 
         <div class="main__title">
           <div class="main__greeting">
-            <h1 id="nombreCliente">Hola</h1>
+            <h1 class ="texto" id="nombreCliente">Hola</h1>
+            
           </div>
         </div>
+        <div id="nuevaRuti" style="position: relative; left: 77%; display: none;">
+            <button type="button" class="btn btn-success" onclick="llenarModal()" data-bs-toggle="modal" data-bs-target="#nuevaRutina">Nueva rutina</button>
+            </div>
+
       </nav>
             <!-- Fin del nav_bar -->
 
@@ -141,7 +147,7 @@
       <div id="configuracion" style="display:none;">  
         <div class="container-fluid">
           <div class="main__title container-fluid">
-            <h1>Modifica tu perfil </h1>
+            <h1 class="texto">Modifica tu perfil </h1>
           </div>
 
           <div class="container-fluid">
@@ -231,7 +237,7 @@
             <a href="#" onclick="desplegarRutinas()" >Rutinas</a>
           </div>
           <div class="sidebar__link">
-            <i class="fa fa-money"></i>
+            <i class="fa fa-user-o"></i>
             <a href="#" onclick="desplegarClientes()">Clientes</a>
           </div>
           <div class="sidebar__link">
