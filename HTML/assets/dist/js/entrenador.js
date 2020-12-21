@@ -26,7 +26,7 @@ axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
     console.log(error)
 })
 
-axios.post('https://gimnasio-sw.herokuapp.com/rutinasEntrenador',  {
+axios.post('https://gimnasio-sw.herokuapp.com/clientesAsignados',  {
 // axios.post('http://localhost:4567/clientesAsignados',  {
     Email: sesion
 })
