@@ -29,18 +29,6 @@ axios.post('https://gimnasio-sw.herokuapp.com/membresiasFTL',  {
     console.log(error)
 })
 
-// axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-// // axios.post('http://localhost:4567/rutinas',  {
-//     Email: sesion
-// })
-// .then(function (response) {
-//     console.log(response.data)
-//     rutinas.innerHTML = response.data;    
-// })
-// .catch(function (error) {
-//     console.log(error)
-// })
-
 // axios.post('http://localhost:4567/getDatos',  {
 axios.post('https://gimnasio-sw.herokuapp.com/getDatos',  {
       Email: sesion

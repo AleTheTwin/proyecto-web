@@ -243,7 +243,6 @@ public final class App {
             if(entrenadorP != null) {
                 return "0";
             } else {
-                //Mail.enviarEmail(nombre, email);
                 entrenadorDAO.create(cliente);
             }
             return email;
@@ -362,9 +361,6 @@ public final class App {
             }
 
             model.put("membresias", membresias);
-            model.put("jeje", prueba);
-            model.put("email", email);
-            model.put("selected", membresia.getId());
             return new ModelAndView(model, "membresias.ftl"); // located in src/test/resources/spark/template/freemarker
         }, new FreeMarkerEngine());
 
