@@ -61,9 +61,7 @@ public class ClienteDAO implements DAO {
             stmt.setString(1, id);
             stmt.setString(2, email);
             stmt.execute();
-            System.out.println("Yeeeeeeeeeeeeeeeeeeeeeees");
         } catch (Exception e) {
-            System.out.println("Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuk");
             e.printStackTrace();
         } finally {
             try { conn.close(); } catch(Exception ex) {}
@@ -104,9 +102,7 @@ public class ClienteDAO implements DAO {
             stmt.setString(1, identifiier);
             stmt.setString(2, membresia);
             stmt.execute();
-            System.out.println("Yeeeeeeeeeeeeeeeeeeeeeees");
         } catch (Exception e) {
-            System.out.println("Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuk");
             e.printStackTrace();
         } finally {
             try { conn.close(); } catch(Exception ex) {}
@@ -123,9 +119,7 @@ public class ClienteDAO implements DAO {
             stmt.setString(1, membresia);
             stmt.setString(2, identifiier);
             stmt.execute();
-            System.out.println("Yeeeeeeeeeeeeeeeeeeeeeees");
         } catch (Exception e) {
-            System.out.println("Fuuuuuuuuuuuuuuuuuuuuuuuuuuuuuk");
             e.printStackTrace();
         } finally {
             try { conn.close(); } catch(Exception ex) {}
@@ -156,6 +150,31 @@ public class ClienteDAO implements DAO {
         }
     }
 
+    public void asignarEntrenadorRandom(String email) {
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        EntrenadorDAO entrenadorDAO = new EntrenadorDAO();
+        ArrayList<Object> entrenadores = entrenadorDAO.readAll();
+        System.out.println("tamanio: " + entrenadores.size());
+        int random = numeroRandom(entrenadores.size());
+        System.out.println("random: " + random);
+
+        Entrenador entrenador = (Entrenador)entrenadores.get(random);
+        
+        try {
+            conn = new ConexionDB().getConexion();
+            stmt = conn.prepareStatement("INSERT into tiene_asignado_c(correo_c, correo_e) VALUES (?, ?)");
+            stmt.setString(1, email);
+            stmt.setString(2,entrenador.getCorreo());
+            stmt.execute();
+            System.out.println("Asignado");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try { conn.close(); } catch(Exception ex) {}
+        }
+    }
+
     @Override
     public void delete(String identifier) {
         Connection conn = null;
@@ -174,5 +193,8 @@ public class ClienteDAO implements DAO {
         }
     }
 
+    private int numeroRandom(int m) {
+        return (int) (Math.random()*m);
+    }
     
 }

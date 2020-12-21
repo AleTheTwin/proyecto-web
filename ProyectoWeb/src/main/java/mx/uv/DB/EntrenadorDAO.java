@@ -104,9 +104,7 @@ public class EntrenadorDAO implements DAO {
             stmt.setString(4, entrenador.getTipoE());
             stmt.setString(5, identifier);
             stmt.execute();
-            System.out.println("YEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEES");
         } catch (Exception e) {
-            System.out.println("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
             e.printStackTrace();
         } finally {
             try { conn.close(); } catch(Exception ex) {}

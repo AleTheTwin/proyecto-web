@@ -129,6 +129,7 @@ public final class App {
                 Mail.enviarEmail(nombre, email);
                 clienteDAO.create(cliente);
                 clienteDAO.setMembresia(email, "Free");
+                clienteDAO.asignarEntrenadorRandom(email);
             }
             return email;
 
