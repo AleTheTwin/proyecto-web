@@ -86,8 +86,15 @@ body {
     "sidebar main main main";
 }
 
+
+
+
+
+
+
+
 .navbar {
-  background: #ffffffe5;
+  background: #ffffffcb;
   grid-area: nav;
   height: 60px;
   
@@ -111,7 +118,7 @@ body {
 
 
 main {
-  background: #f3f4f6;
+  background: #f3f4f693;
   grid-area: main;
   overflow-y: auto;
   overflow-x: auto;
@@ -280,7 +287,6 @@ main {
 }
 .container2{
     margin-top: 100px;
-    display: flex;
     justify-content: space-between;
    
 }
@@ -334,6 +340,13 @@ color: #29a8f79c;
   font-weight: 100;
   color: #ffffff;
 }
+
+.texto1{
+  font-family: 'Lato', sans-serif; 
+  font-weight: 100;
+  color: #000000;
+}
+
 .camposEdit > i  {
   margin-bottom: 20px;
   padding: 22px;

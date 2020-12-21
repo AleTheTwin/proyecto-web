@@ -11,7 +11,7 @@
     </#list>
   </ul>
 </div>  -->
-  <h1 style= "text-align: center;" class:>Estas son sus rutinas</h1>
+  <h1 class="texto1" style= "text-align: center;" class:>Estas son sus rutinas</h1>
   <div class="row">
   <#list rutinas as rutina>
     <div class="cards col-sm">
