@@ -63,8 +63,8 @@ actualizar.addEventListener('click', function () {
           contraseñaConfig.value = window.btoa(contraseñaConfig.value);
         }
         alerta.style.display = 'none'
-        axios.post('http://localhost:4567/actualizarCliente',  {
-        //axios.post('https://gimnasio-sw.herokuapp.com/actualizarCliente',  {
+        // axios.post('http://localhost:4567/actualizarCliente',  {
+        axios.post('https://gimnasio-sw.herokuapp.com/actualizarCliente',  {
               Email: sesion,
               Correo: emailConfig.value,
               Password: contraseñaConfig.value,
@@ -131,8 +131,8 @@ function desplegarMembresia(){
   var precio = document.getElementById("precioMembresia");
   var descripcion = document.getElementById("descripcionMembresia");
   var id = document.getElementById("idMembresia");
-  //axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
-   axios.post('http://localhost:4567/membresiaByEmail',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  //  axios.post('http://localhost:4567/membresiaByEmail',  {
       Email: sesion
   })
   .then(function (response) {
@@ -155,8 +155,8 @@ function desplegarConfiguracion(){
   var precio = document.getElementById("precioMembresia");
   var descripcion = document.getElementById("descripcionMembresia");
   var id = document.getElementById("idMembresia");
-  //axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
-  axios.post('http://localhost:4567/membresiaByEmail',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/membresiaByEmail',  {
+  // axios.post('http://localhost:4567/membresiaByEmail',  {
       Email: sesion
   })
   .then(function (response) {
@@ -177,8 +177,8 @@ function desplegarConfiguracion(){
 
 function desplegarRutinas(){
   var id = document.getElementById("rutinas");
- //axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
-   axios.post('http://localhost:4567/rutinas',  {
+ axios.post('https://gimnasio-sw.herokuapp.com/rutinas',  {
+  //  axios.post('http://localhost:4567/rutinas',  {
       Email: sesion
   })
   .then(function (response) {
@@ -228,8 +228,8 @@ function isNumber(e) {
 //funcion de selección de membresía
 
 function seleccionarMembresia(id) {
-  //axios.post('https://gimnasio-sw.herokuapp.com/updateMembresiaCliente',  {
-   axios.post('http://localhost:4567/updateMembresiaCliente',  {
+  axios.post('https://gimnasio-sw.herokuapp.com/updateMembresiaCliente',  {
+  //  axios.post('http://localhost:4567/updateMembresiaCliente',  {
       Email: sesion,
       Id: id
   })
