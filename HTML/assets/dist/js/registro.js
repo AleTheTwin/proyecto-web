@@ -18,8 +18,8 @@ bRegistro.addEventListener('click', function () {
                     if(document.getElementById('sexBox').value != "Empty") {
                         if(document.getElementById('userBox').value != "Empty") {
                             console.log(document.getElementById('userBox').value)
-                            // axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
-                            axios.post('http://localhost:4567/registro',  {
+                            axios.post('https://gimnasio-sw.herokuapp.com/registro',  {
+                            // axios.post('http://localhost:4567/registro',  {
                                 Email: document.getElementById('correoREG').value,
                                 Password: encodedPassword,
                                 Edad: document.getElementById('edadREG').value,
